@@ -36,9 +36,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
           <header style={{ backgroundColor: brandNavy, color: white, padding: '20px 32px' }}>
             <div style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
-              <Link href="/" style={{ textDecoration: 'none', color: white, display: 'flex', alignItems: 'center', gap: 10, fontSize: 20, fontWeight: 700 }}>
-                <span style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: brandRed, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>⭐</span>
-                <span>Bet<span style={{ color: brandRed }}>&</span>PlayUSA</span>
+              <Link href="/" style={{ textDecoration: 'none', color: '#ffffff', display: 'flex', alignItems: 'center', gap: 10, fontSize: 20, fontWeight: 700 }}>
+                <span style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: '#D91E27', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>⭐</span>
+                <span>Bet<span style={{ color: '#D91E27' }}>&</span>PlayUSA</span>
               </Link>
               <nav className="desktop-nav" style={{ display: 'flex', gap: 18, alignItems: 'center', flexWrap: 'wrap' }}>
                 <Link href="/activate" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Activate</Link>
