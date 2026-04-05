@@ -32,6 +32,19 @@ export async function PATCH(request, context) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
+    // Send Telegram approval email if approved and type is social
+    if (status === 'approved' && data.type === 'social' && data.email) {
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer re_Uovusepx_Gq9ZXbg9X7yz9joCDeRnqvsa' },
+        body: JSON.stringify({
+          from: 'onboarding@resend.dev',
+          to: data.email,
+          subject: 'You have been approved - here is your Telegram invite',
+          html: '<p>Hi ' + data.first_name + ',</p><p>Great news! Your proof has been verified and you have been approved to join our premium Telegram betting tips group.</p><p>Click the link below to join:</p><p><a href="TELEGRAM_INVITE_LINK">Join the Telegram Group</a></p><p>Welcome to the group!</p><p>- BetAndPlayUSA Team</p>',
+        }),
+      }).catch(function(e) { console.error('Approval email error:', e); });
+    }
     return NextResponse.json({ submission: data });
   } catch (e) {
     console.error("Route error:", e);
