@@ -341,7 +341,6 @@ export default function HomePage() {
                     {book.logo}
                   </div>
                   <div style={styles.cardTitle}>{book.name}</div>
-                  <div style={styles.cardBadge}>${book.cpa} CPA</div>
                   <div style={styles.cardOffer}>{book.offer}</div>
                   <a href={book.affiliateLink || '#'} style={styles.cardButton} target="_blank" rel="noreferrer">
                     Claim offer
