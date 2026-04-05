@@ -306,21 +306,7 @@ export default function ActivatePage() {
                       boxShadow: isSelected ? '0 20px 60px rgba(11, 37, 69, 0.12)' : '0 20px 40px rgba(15, 23, 42, 0.05)'
                     }}
                   >
-                    <div style={{
-                      width: 52,
-                      height: 52,
-                      borderRadius: 16,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontWeight: 800,
-                      fontSize: 16,
-                      color: book.logoColors.text,
-                      backgroundColor: book.logoColors.bg,
-                      flexShrink: 0
-                    }}>
-                      {book.logo}
-                    </div>
+                    <img src={book.logoPath} alt={book.name} style={{ width: 52, height: 52, borderRadius: 16, objectFit: 'contain', background: book.logoColors.bg, padding: 4, flexShrink: 0 }} />
                     <div style={{ flex: 1 }}>
                       <h3 style={{ margin: 0, color: navy, fontSize: 20, fontWeight: 700 }}>
                         {book.name}

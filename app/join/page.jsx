@@ -2,11 +2,11 @@
 import { useState, useRef } from 'react';
 
 const SPORTSBOOKS = [
-  { id: 'fanduel', name: 'FanDuel', initials: 'FD', bg: '#1059a4', text: '#ffffff', offer: 'Bet $5, Get up to $3,000 in Bonus Bets' },
-  { id: 'draftkings', name: 'DraftKings', initials: 'DK', bg: '#1a1a2e', text: '#00d4aa', offer: 'Bet $5, Get $200 in Bonus Bets Instantly' },
-  { id: 'caesars', name: 'Caesars', initials: 'CS', bg: '#003087', text: '#FFD700', offer: 'Bet $1, Get 10x 100% Profit Boost Tokens' },
-  { id: 'fanatics', name: 'Fanatics', initials: 'FA', bg: '#cc0000', text: '#ffffff', offer: 'Bet $5, Get $200 in FanCash Immediately' },
-  { id: 'betmgm', name: 'BetMGM', initials: 'BM', bg: '#c9a84c', text: '#1a1a1a', offer: 'First Bet Offer Up to $1,500 in Bonus Bets' },
+  { id: 'fanduel', name: 'FanDuel', initials: 'FD', bg: '#1059a4', text: '#ffffff', offer: 'Bet $5, Get up to $3,000 in Bonus Bets', logo: '/fanduel.png' },
+  { id: 'draftkings', name: 'DraftKings', initials: 'DK', bg: '#1a1a2e', text: '#00d4aa', offer: 'Bet $5, Get $200 in Bonus Bets Instantly', logo: '/draftkings.png' },
+  { id: 'caesars', name: 'Caesars', initials: 'CS', bg: '#003087', text: '#FFD700', offer: 'Bet $1, Get 10x 100% Profit Boost Tokens', logo: '/caesars.png' },
+  { id: 'fanatics', name: 'Fanatics', initials: 'FA', bg: '#cc0000', text: '#ffffff', offer: 'Bet $5, Get $200 in FanCash Immediately', logo: '/fanatics.png' },
+  { id: 'betmgm', name: 'BetMGM', initials: 'BM', bg: '#c9a84c', text: '#1a1a1a', offer: 'First Bet Offer Up to $1,500 in Bonus Bets', logo: '/betmgm.png' },
 ];
 
 const CONSENTS = [
@@ -124,7 +124,9 @@ export default function JoinPage() {
                 const selected = selectedBook && selectedBook.id === book.id;
                 return (
                   <button key={book.id} onClick={function() { setSelectedBook(book); }} style={{ background: '#fff', border: selected ? '2px solid #0B2545' : '2px solid #e2e8f0', borderRadius: 14, padding: '14px 16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 14, textAlign: 'left', width: '100%', boxShadow: selected ? '0 0 0 3px rgba(11,37,69,0.08)' : 'none' }}>
-                    <div style={{ width: 46, height: 46, borderRadius: 10, background: book.bg, color: book.text, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 13, flexShrink: 0 }}>{book.initials}</div>
+                    <div style={{ width: 46, height: 46, borderRadius: 10, background: book.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 5, boxSizing: 'border-box' }}>
+                      <img src={book.logo} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                    </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontWeight: 700, color: '#0B2545', fontSize: 15 }}>{book.name}</div>
                       <div style={{ color: '#64748b', fontSize: 13, marginTop: 2 }}>{book.offer}</div>
@@ -146,7 +148,9 @@ export default function JoinPage() {
             <p style={{ color: '#64748b', fontSize: 14, margin: '0 0 20px' }}>We will send your Telegram invite and confirmation here.</p>
             {selectedBook && (
               <div style={{ background: '#f0f4ff', borderRadius: 12, padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 8, background: selectedBook.bg, color: selectedBook.text, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 12, flexShrink: 0 }}>{selectedBook.initials}</div>
+                <div style={{ width: 46, height: 46, borderRadius: 10, background: selectedBook.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 5, boxSizing: 'border-box' }}>
+                  <img src={selectedBook.logo} alt={selectedBook.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                </div>
                 <div>
                   <div style={{ fontSize: 13, fontWeight: 700, color: '#0B2545' }}>{selectedBook.name}</div>
                   <div style={{ fontSize: 12, color: '#64748b' }}>{selectedBook.offer}</div>

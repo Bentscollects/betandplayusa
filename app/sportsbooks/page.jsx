@@ -6,10 +6,10 @@ const SPORTSBOOKS = [
     id: 'fanduel',
     name: 'FanDuel',
     initials: 'FD',
+    logo: '/fanduel.png',
     bg: '#1059a4',
     text: '#ffffff',
     offer: 'Bet $5, Get up to $3,000 in Bonus Bets',
-    details: 'No promo code needed — bonus auto applied at signup.',
     cpa: 250,
     affiliateLink: 'https://wlfanduelus.adsrv.eacdn.com/C.ashx?btag=a_44859b_16c_&affid=21038&siteid=44859&adid=16&c=',
     states: ['AZ', 'CO', 'CT', 'IL', 'IN', 'IA', 'KS', 'LA', 'MD', 'MA', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV', 'WY'],
@@ -18,10 +18,10 @@ const SPORTSBOOKS = [
     id: 'draftkings',
     name: 'DraftKings',
     initials: 'DK',
+    logo: '/draftkings.png',
     bg: '#1a1a2e',
     text: '#00d4aa',
     offer: 'Bet $5, Get $200 in Bonus Bets Instantly',
-    details: 'No promo code needed — bonus auto applied at signup.',
     cpa: 200,
     affiliateLink: 'https://dksb.sng.link/As9kz/uc22?_dl=https%3A%2F%2Fsportsbook.draftkings.com%2Fgateway%3Fs%3D103658189&pcid=422642&psn=3064&pcn=OSB_Bet5NUO&pscn=oddschecker_101GreatGoals&pcrn=WebReview&pscid=xx&pcrid=xx&wpcid=422642&wpsrc=3064&wpcn=OSB_Bet5NUO&wpscn=oddschecker_101GreatGoals&wpcrn=WebReview&wpscid=xx&wpcrid=xx&_forward_params=1',
     states: ['AZ', 'CO', 'CT', 'IL', 'IN', 'IA', 'KS', 'LA', 'MD', 'MA', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV', 'WY'],
@@ -30,11 +30,10 @@ const SPORTSBOOKS = [
     id: 'caesars',
     name: 'Caesars',
     initials: 'CS',
+    logo: '/caesars.png',
     bg: '#003087',
     text: '#FFD700',
     offer: 'Bet $1, Get 10x 100% Profit Boost Tokens',
-    details: 'Use promo code at signup.',
-    promoCode: 'PROMO_CAESARS',
     cpa: 200,
     affiliateLink: 'https://wlwilliamhillus.adsrv.eacdn.com/C.ashx?btag=a_26199b_2588c_&affid=465&siteid=26199&adid=2588&c=',
     states: ['AZ', 'CO', 'IL', 'IN', 'IA', 'LA', 'MD', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV'],
@@ -43,11 +42,10 @@ const SPORTSBOOKS = [
     id: 'fanatics',
     name: 'Fanatics',
     initials: 'FA',
+    logo: '/fanatics.png',
     bg: '#cc0000',
     text: '#ffffff',
     offer: 'Bet $5, Get $200 in FanCash Immediately',
-    details: 'Use promo code at signup.',
-    promoCode: 'PROMO_FANATICS',
     cpa: 200,
     affiliateLink: 'https://track.fanaticsbettingpartners.com/track/e3da5749-405e-4283-a8de-cb773323f82c?type=seo&s1=Confido52',
     states: ['AZ', 'CO', 'IL', 'IN', 'KS', 'LA', 'MD', 'MA', 'MI', 'NJ', 'OH', 'PA', 'TN', 'VA'],
@@ -56,11 +54,10 @@ const SPORTSBOOKS = [
     id: 'betmgm',
     name: 'BetMGM',
     initials: 'BM',
+    logo: '/betmgm.png',
     bg: '#c9a84c',
     text: '#1a1a1a',
     offer: 'First Bet Offer Up to $1,500 in Bonus Bets',
-    details: 'Use promo code at signup.',
-    promoCode: 'PROMO_BETMGM',
     cpa: 150,
     affiliateLink: 'https://mediaserver.betmgmpartners.com/renderBanner.do?zoneId=1727083',
     states: ['AZ', 'CO', 'IL', 'IN', 'IA', 'LA', 'MD', 'MA', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV', 'WY'],
@@ -125,7 +122,9 @@ export default function SportsbooksPage() {
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14, flex: 1, minWidth: 200 }}>
                     <div style={{ position: 'relative', flexShrink: 0 }}>
-                      <div style={{ width: 56, height: 56, borderRadius: 12, background: book.bg, color: book.text, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 15 }}>{book.initials}</div>
+                      <div style={{ width: 56, height: 56, borderRadius: 12, background: book.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 6, boxSizing: 'border-box' }}>
+                        <img src={book.logo} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                      </div>
                       {idx === 0 && (
                         <div style={{ position: 'absolute', top: -6, right: -6, background: '#E63946', color: '#fff', fontSize: 9, fontWeight: 700, padding: '2px 5px', borderRadius: 6, textTransform: 'uppercase', letterSpacing: 0.5 }}>Top</div>
                       )}
@@ -137,14 +136,7 @@ export default function SportsbooksPage() {
                   </div>
 
                   <div style={{ flex: 2, minWidth: 200 }}>
-                    <div style={{ fontWeight: 700, color: '#0B2545', fontSize: 15, marginBottom: 4 }}>{book.offer}</div>
-                    <div style={{ fontSize: 13, color: '#64748b' }}>{book.details}</div>
-                    {book.promoCode && (
-                      <div style={{ marginTop: 8, display: 'inline-flex', alignItems: 'center', gap: 6, background: '#fef9c3', border: '1px solid #fde047', borderRadius: 8, padding: '4px 10px' }}>
-                        <span style={{ fontSize: 12, color: '#854d0e', fontWeight: 600 }}>Promo code:</span>
-                        <span style={{ fontSize: 12, color: '#854d0e', fontWeight: 800, letterSpacing: 0.5 }}>{book.promoCode}</span>
-                      </div>
-                    )}
+                    <div style={{ fontWeight: 700, color: '#0B2545', fontSize: 15 }}>{book.offer}</div>
                   </div>
 
                   <div style={{ flexShrink: 0 }}>

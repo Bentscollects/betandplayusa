@@ -10,7 +10,6 @@ const navLinks = [
   { href: "/activate", label: "Activate" },
   { href: "/join", label: "Join" },
   { href: "/sportsbooks", label: "Sportsbooks" },
-  { href: "/admin", label: "Admin" },
   { href: "/privacy", label: "Get Started", isButton: true },
 ];
 

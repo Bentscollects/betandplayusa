@@ -44,7 +44,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <Link href="/activate" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Activate</Link>
                 <Link href="/join" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Join</Link>
                 <Link href="/sportsbooks" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Sportsbooks</Link>
-                <Link href="/admin" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Admin</Link>
                 <Link href="/privacy" style={{ backgroundColor: white, color: brandNavy, padding: '10px 18px', borderRadius: 9999, textDecoration: 'none', fontWeight: 700 }}>Get Started</Link>
               </nav>
               <div className="mobile-nav-hamburger" style={{ display: 'flex', alignItems: 'center' }}>

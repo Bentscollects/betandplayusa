@@ -6,11 +6,11 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 const SPORTSBOOK_STYLES = {
-  fanduel:    { bg: '#1059a4', text: '#fff', initials: 'FD' },
-  draftkings: { bg: '#1a1a2e', text: '#00d4aa', initials: 'DK' },
-  caesars:    { bg: '#003087', text: '#FFD700', initials: 'CS' },
-  betmgm:     { bg: '#c9a84c', text: '#1a1a1a', initials: 'BM' },
-  fanatics:   { bg: '#cc0000', text: '#fff', initials: 'FA' },
+  fanduel:    { bg: '#1059a4', text: '#fff', initials: 'FD', logo: '/fanduel.png' },
+  draftkings: { bg: '#1a1a2e', text: '#00d4aa', initials: 'DK', logo: '/draftkings.png' },
+  caesars:    { bg: '#003087', text: '#FFD700', initials: 'CS', logo: '/caesars.png' },
+  betmgm:     { bg: '#c9a84c', text: '#1a1a1a', initials: 'BM', logo: '/betmgm.png' },
+  fanatics:   { bg: '#cc0000', text: '#fff', initials: 'FA', logo: '/fanatics.png' },
 };
 
 const STATUS_STYLES = {
@@ -24,7 +24,10 @@ const STATUS_STYLES = {
 const FILTERS = ['all', 'pending', 'host_verified', 'approved', 'flagged', 'rejected'];
 
 function BookAvatar({ sportsbook }) {
-  const s = SPORTSBOOK_STYLES[sportsbook] || { bg: '#e2e8f0', text: '#374151', initials: '?' };
+  const s = SPORTSBOOK_STYLES[sportsbook] || { bg: '#e2e8f0', text: '#374151', initials: '?', logo: null };
+  if (s.logo) {
+    return <img src={s.logo} alt={sportsbook} style={{ width: 30, height: 30, borderRadius: 6, objectFit: 'contain', background: s.bg, padding: 2, flexShrink: 0 }} />;
+  }
   return (
     <div style={{ width: 30, height: 30, borderRadius: 6, background: s.bg, color: s.text, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 800, flexShrink: 0 }}>
       {s.initials}
