@@ -11,7 +11,7 @@ const SPORTSBOOKS = [
     offer: 'Bet $5, Get up to $3,000 in Bonus Bets',
     details: 'No promo code needed — bonus auto applied at signup.',
     cpa: 250,
-    affiliateLink: 'AFFILIATE_LINK_FANDUEL',
+    affiliateLink: 'https://wlfanduelus.adsrv.eacdn.com/C.ashx?btag=a_44859b_16c_&affid=21038&siteid=44859&adid=16&c=',
     states: ['AZ', 'CO', 'CT', 'IL', 'IN', 'IA', 'KS', 'LA', 'MD', 'MA', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV', 'WY'],
   },
   {
@@ -23,7 +23,7 @@ const SPORTSBOOKS = [
     offer: 'Bet $5, Get $200 in Bonus Bets Instantly',
     details: 'No promo code needed — bonus auto applied at signup.',
     cpa: 200,
-    affiliateLink: 'AFFILIATE_LINK_DRAFTKINGS',
+    affiliateLink: 'https://dksb.sng.link/As9kz/uc22?_dl=https%3A%2F%2Fsportsbook.draftkings.com%2Fgateway%3Fs%3D103658189&pcid=422642&psn=3064&pcn=OSB_Bet5NUO&pscn=oddschecker_101GreatGoals&pcrn=WebReview&pscid=xx&pcrid=xx&wpcid=422642&wpsrc=3064&wpcn=OSB_Bet5NUO&wpscn=oddschecker_101GreatGoals&wpcrn=WebReview&wpscid=xx&wpcrid=xx&_forward_params=1',
     states: ['AZ', 'CO', 'CT', 'IL', 'IN', 'IA', 'KS', 'LA', 'MD', 'MA', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV', 'WY'],
   },
   {
@@ -36,7 +36,7 @@ const SPORTSBOOKS = [
     details: 'Use promo code at signup.',
     promoCode: 'PROMO_CAESARS',
     cpa: 200,
-    affiliateLink: 'AFFILIATE_LINK_CAESARS',
+    affiliateLink: 'https://wlwilliamhillus.adsrv.eacdn.com/C.ashx?btag=a_26199b_2588c_&affid=465&siteid=26199&adid=2588&c=',
     states: ['AZ', 'CO', 'IL', 'IN', 'IA', 'LA', 'MD', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV'],
   },
   {
@@ -49,7 +49,7 @@ const SPORTSBOOKS = [
     details: 'Use promo code at signup.',
     promoCode: 'PROMO_FANATICS',
     cpa: 200,
-    affiliateLink: 'AFFILIATE_LINK_FANATICS',
+    affiliateLink: 'https://track.fanaticsbettingpartners.com/track/e3da5749-405e-4283-a8de-cb773323f82c?type=seo&s1=Confido52',
     states: ['AZ', 'CO', 'IL', 'IN', 'KS', 'LA', 'MD', 'MA', 'MI', 'NJ', 'OH', 'PA', 'TN', 'VA'],
   },
   {
@@ -62,7 +62,7 @@ const SPORTSBOOKS = [
     details: 'Use promo code at signup.',
     promoCode: 'PROMO_BETMGM',
     cpa: 150,
-    affiliateLink: 'AFFILIATE_LINK_BETMGM',
+    affiliateLink: 'https://mediaserver.betmgmpartners.com/renderBanner.do?zoneId=1727083',
     states: ['AZ', 'CO', 'IL', 'IN', 'IA', 'LA', 'MD', 'MA', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV', 'WY'],
   },
 ];
