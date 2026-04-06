@@ -160,6 +160,9 @@ export default function SportsbooksPage() {
                   </div>
                   <div style={{ flex: 1, minWidth: 180 }}>
                     <div style={{ fontWeight: 900, fontSize: 18, color: NAVY, marginBottom: 4 }}>{book.name}</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 2, marginBottom: 4 }}>
+                      <span style={{ background: '#dcfce7', color: '#166534', fontSize: 10, fontWeight: 700, padding: '2px 7px', borderRadius: 4, textTransform: 'uppercase', letterSpacing: 0.3 }}>&#10003; Licensed &amp; Regulated</span>
+                    </div>
                     <div style={{ fontWeight: 700, fontSize: 15, color: '#111827', marginBottom: 4 }}>{book.offer}</div>
                     <div style={{ fontSize: 13, color: '#6b7280' }}>{book.details}</div>
                     <div style={{ display: 'flex', gap: 16, marginTop: 8, flexWrap: 'wrap' }}>

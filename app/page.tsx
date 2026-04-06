@@ -43,7 +43,7 @@ const AFFILIATE_LINKS: Record<string, string> = {
 export default function HomePage() {
   const [userState, setUserState] = useState(null)
   const [visibleBooks, setVisibleBooks] = useState(sportsbooks)
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(0)
   const US_STATES = ['AL','AK','AZ','AR','CO','CT','DC','DE','FL','GA','IL','IN','IA','KS','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WV','WI','WY']
   const isUSState = userState && US_STATES.includes(userState)
 
@@ -55,13 +55,25 @@ export default function HomePage() {
         if (filtered && filtered.length > 0) setVisibleBooks(filtered)
       }
     })
-    function handleScroll() { setScrolled(window.scrollY > 40) }
+    function handleScroll() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrolled(progress);
+    }
     window.addEventListener('scroll', handleScroll)
     return function() { window.removeEventListener('scroll', handleScroll) }
   }, [])
 
   return (
     <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', background: LIGHT, color: CHARCOAL }}>
+      <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 99998, height: 3, background: '#D91E27', transition: 'width 0.1s', width: scrolled + '%' }} />
+      <style>{`
+        .sb-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.1) !important; transition: all 0.2s ease; }
+        .sb-card { transition: all 0.2s ease; }
+        .claim-btn:hover { background: #b91c1c !important; transform: translateY(-1px); }
+        .claim-btn { transition: all 0.15s ease; }
+      `}</style>
 
       {/* TICKER */}
       <div style={{ background: '#D91E27', padding: '8px 0', overflow: 'hidden', whiteSpace: 'nowrap' }}>
@@ -220,6 +232,42 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* DECISION HELPER */}
+      <div style={{ padding: '60px 24px', background: '#ffffff' }}>
+        <div style={{ maxWidth: 860, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 40 }}>
+            <div style={{ display: 'inline-block', background: '#D91E27', color: '#ffffff', fontSize: 11, fontWeight: 800, letterSpacing: 2, textTransform: 'uppercase', padding: '5px 16px', borderRadius: 4, marginBottom: 16 }}>Choose Your Path</div>
+            <h2 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: '#1B3A6B', margin: 0, textTransform: 'uppercase' }}>Which is Right for You?</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+            <div style={{ background: '#f4f6fa', borderRadius: 16, padding: '28px 24px', border: '2px solid #e5e7eb', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: '#D91E27' }} />
+              <div style={{ fontSize: 36, marginBottom: 12 }}>💵</div>
+              <h3 style={{ fontSize: 20, fontWeight: 900, color: '#1B3A6B', margin: '0 0 12px', textTransform: 'uppercase' }}>Cash Reward</h3>
+              <p style={{ fontSize: 14, color: '#4b5563', marginBottom: 20, lineHeight: 1.7 }}>Best if you are at a bar or event right now and want cash in your hand today.</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 24 }}>
+                {['You scanned a QR code at a venue', 'You want cash paid immediately', 'You have a host code from the bar'].map(function(point) {
+                  return <div key={point} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: '#374151' }}><span style={{ color: '#22c55e', fontWeight: 900, fontSize: 16 }}>✓</span>{point}</div>;
+                })}
+              </div>
+              <a href="/activate" style={{ display: 'block', background: '#D91E27', color: '#fff', textAlign: 'center', padding: '13px 20px', borderRadius: 10, fontWeight: 800, fontSize: 14, textDecoration: 'none', textTransform: 'uppercase', letterSpacing: 0.5 }}>Claim Cash Reward</a>
+            </div>
+            <div style={{ background: '#f4f6fa', borderRadius: 16, padding: '28px 24px', border: '2px solid #e5e7eb', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: '#1B3A6B' }} />
+              <div style={{ fontSize: 36, marginBottom: 12 }}>📲</div>
+              <h3 style={{ fontSize: 20, fontWeight: 900, color: '#1B3A6B', margin: '0 0 12px', textTransform: 'uppercase' }}>Telegram Tips</h3>
+              <p style={{ fontSize: 14, color: '#4b5563', marginBottom: 20, lineHeight: 1.7 }}>Best if you found us online and want free expert betting tips every day.</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 24 }}>
+                {['You found us via social media or ads', 'You want free daily betting tips', 'You are happy to sign up online'].map(function(point) {
+                  return <div key={point} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: '#374151' }}><span style={{ color: '#22c55e', fontWeight: 900, fontSize: 16 }}>✓</span>{point}</div>;
+                })}
+              </div>
+              <a href="/join" style={{ display: 'block', background: '#1B3A6B', color: '#fff', textAlign: 'center', padding: '13px 20px', borderRadius: 10, fontWeight: 800, fontSize: 14, textDecoration: 'none', textTransform: 'uppercase', letterSpacing: 0.5 }}>Join Tips Group</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* SPORTSBOOKS */}
       <div style={{ padding: '80px 24px', background: LIGHT }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
@@ -237,7 +285,7 @@ export default function HomePage() {
               const logoSrc = SPORTSBOOK_LOGOS[book.id as keyof typeof SPORTSBOOK_LOGOS]
               const bgColor = SPORTSBOOK_COLORS[book.id as keyof typeof SPORTSBOOK_COLORS] || NAVY
               return (
-                <div key={book.id} style={{ background: WHITE, borderRadius: 12, border: '1px solid #e5e7eb', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', position: 'relative' }}>
+                <div key={book.id} className="sb-card" style={{ background: WHITE, borderRadius: 12, border: '1px solid #e5e7eb', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', position: 'relative' }}>
                   {idx === 0 && (
                     <span style={{ position: 'absolute', top: 12, left: 12, background: RED, color: WHITE, fontSize: 9, fontWeight: 800, padding: '2px 6px', borderRadius: 4, textTransform: 'uppercase', letterSpacing: 0.5, zIndex: 1 }}>Top Pick</span>
                   )}
@@ -249,7 +297,7 @@ export default function HomePage() {
                       <div style={{ fontWeight: 800, fontSize: 17, color: NAVY }}>{book.name}</div>
                       <div style={{ fontSize: 14, color: '#374151', marginTop: 3, fontWeight: 600 }}>{book.offer}</div>
                     </div>
-                    <button onClick={function() { window.open(AFFILIATE_LINKS[book.id] || '/activate', '_blank') }} style={{ background: RED, color: WHITE, padding: '12px 24px', borderRadius: 8, fontWeight: 800, fontSize: 14, border: 'none', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: 0.5, flexShrink: 0, whiteSpace: 'nowrap' }}>
+                    <button onClick={function() { window.open(AFFILIATE_LINKS[book.id] || '/activate', '_blank') }} className="claim-btn" style={{ background: RED, color: WHITE, padding: '12px 24px', borderRadius: 8, fontWeight: 800, fontSize: 14, border: 'none', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: 0.5, flexShrink: 0, whiteSpace: 'nowrap' }}>
                       Claim Offer
                     </button>
                   </div>
@@ -415,6 +463,9 @@ export default function HomePage() {
           BetAndPlayUSA is an affiliate marketing website. We earn commissions when you sign up through our links. This does not affect the bonuses you receive. Must be 21+ and physically located in an eligible US state. Gambling problem? Call 1-800-GAMBLER.
         </p>
       </div>
+
+      <div style={{ height: 80 }} className="mobile-bottom-spacer" />
+      <style>{`.mobile-bottom-spacer { display: none; } @media (max-width: 767px) { .mobile-bottom-spacer { display: block; } }`}</style>
 
       <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 999, background: '#0f2147', borderTop: '2px solid #D91E27', padding: '12px 16px', display: 'flex', gap: 10 }}>
         <style>{`@media (min-width: 768px) { .mobile-sticky-cta { display: none !important; } }`}</style>

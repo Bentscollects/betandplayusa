@@ -137,6 +137,12 @@ export default function AdminOverview() {
     { label: 'Rejected', value: counts.rejected, color: '#475569' },
   ];
 
+  const todayCount = submissions.filter(function(s) {
+    const today = new Date();
+    const subDate = new Date(s.created_at);
+    return subDate.toDateString() === today.toDateString();
+  }).length;
+
   return (
     <div style={{ minHeight: '100vh', background: '#f8f9fb', fontFamily: 'system-ui, sans-serif' }}>
       {toast && <Toast msg={toast.msg} type={toast.type} onClose={function() { setToast(null); }} />}
@@ -159,6 +165,31 @@ export default function AdminOverview() {
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '32px 24px' }}>
         <h1 style={{ fontSize: 22, fontWeight: 700, color: '#0B2545', margin: '0 0 4px' }}>Dashboard</h1>
         <p style={{ fontSize: 14, color: '#64748b', margin: '0 0 28px' }}>All submissions — live from Supabase</p>
+
+        <div style={{ background: '#0f2147', borderRadius: 12, padding: '14px 20px', marginBottom: 20, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 0 3px rgba(34,197,94,0.2)' }} />
+            <span style={{ color: '#fff', fontSize: 14, fontWeight: 700 }}>Live dashboard</span>
+          </div>
+          <div style={{ display: 'flex', gap: 24 }}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: 22, fontWeight: 900, color: '#D91E27', lineHeight: 1 }}>{todayCount}</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: 0.3 }}>Today</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: 22, fontWeight: 900, color: '#fff', lineHeight: 1 }}>{counts.all}</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: 0.3 }}>Total</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: 22, fontWeight: 900, color: '#22c55e', lineHeight: 1 }}>{counts.approved}</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: 0.3 }}>Approved</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: 22, fontWeight: 900, color: '#f59e0b', lineHeight: 1 }}>{counts.pending}</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: 0.3 }}>Pending</div>
+            </div>
+          </div>
+        </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 16, marginBottom: 28 }}>
           {statCards.map(function(card) {
