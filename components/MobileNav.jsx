@@ -7,12 +7,11 @@ const brandRed = "#E63946";
 const white = "#ffffff";
 
 const navLinks = [
-  { href: "/activate", label: "Activate" },
-  { href: "/join", label: "Telegram Tips" },
   { href: "/sportsbooks", label: "Sportsbooks" },
+  { href: "/dfs", label: "DFS" },
   { href: "/sweepstakes", label: "Sweepstakes" },
   { href: "/casino", label: "Casino" },
-  { href: "/join", label: "Activate Now", isButton: true },
+  { href: "/activate", label: "Get Rewarded", isButton: true },
 ];
 
 export default function MobileNav() {

@@ -21,12 +21,11 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
               <span>Bet<span style={{ color: '#D91E27' }}>&</span>PlayUSA</span>
             </Link>
             <nav className="desktop-nav" style={{ display: 'flex', gap: 18, alignItems: 'center', flexWrap: 'wrap' }}>
-              <Link href="/activate" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Activate</Link>
-              <Link href="/join" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Telegram Tips</Link>
               <Link href="/sportsbooks" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Sportsbooks</Link>
+              <Link href="/dfs" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>DFS</Link>
               <Link href="/sweepstakes" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Sweepstakes</Link>
               <Link href="/casino" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Casino</Link>
-              <Link href="/join" style={{ backgroundColor: white, color: brandNavy, padding: '10px 18px', borderRadius: 9999, textDecoration: 'none', fontWeight: 700 }}>Activate Now</Link>
+              <Link href="/activate" style={{ backgroundColor: white, color: brandNavy, padding: '10px 18px', borderRadius: 9999, textDecoration: 'none', fontWeight: 800, fontSize: 14 }}>Get Rewarded</Link>
             </nav>
             <div className="mobile-nav-hamburger" style={{ display: 'flex', alignItems: 'center' }}>
               <MobileNav />

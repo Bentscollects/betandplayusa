@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { sportsbooks, getSportsBooksByState } from '@/lib/sportsbooks'
 import { detectUserState } from '@/lib/utils'
+import EmailCapture from '../components/EmailCapture'
 
 const NAVY = '#1B3A6B'
 const RED = '#D91E27'
@@ -16,6 +17,7 @@ const SPORTSBOOK_LOGOS = {
   caesars: '/caesars.png',
   fanatics: '/fanatics.png',
   betmgm: '/betmgm.png',
+  bet365: '/bet365.png',
 }
 
 const SPORTSBOOK_COLORS = {
@@ -24,6 +26,7 @@ const SPORTSBOOK_COLORS = {
   caesars: '#003087',
   fanatics: '#cc0000',
   betmgm: '#c9a84c',
+  bet365: '#027b5b',
 }
 
 const STATES = ['AL','AK','AZ','AR','CO','CT','DC','DE','FL','GA','IL','IN','IA','KS','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WV','WI','WY']
@@ -34,6 +37,7 @@ const AFFILIATE_LINKS: Record<string, string> = {
   caesars: 'https://wlwilliamhillus.adsrv.eacdn.com/C.ashx?btag=a_26199b_2588c_&affid=465&siteid=26199&adid=2588&c=',
   fanatics: 'https://track.fanaticsbettingpartners.com/track/e3da5749-405e-4283-a8de-cb773323f82c?type=seo&s1=Confido52',
   betmgm: 'https://mediaserver.betmgmpartners.com/renderBanner.do?zoneId=1727083',
+  bet365: 'AFFILIATE_LINK_BET365',
 }
 
 export default function HomePage() {
@@ -102,6 +106,8 @@ export default function HomePage() {
               Join Telegram Tips
             </Link>
           </div>
+
+          <EmailCapture />
 
           {/* Trust badges */}
           <div style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap', marginTop: 52 }}>
@@ -288,8 +294,31 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* TWO PATHS */}
-      <div style={{ padding: '80px 24px', background: NAVY, position: 'relative', overflow: 'hidden' }}>
+      {/* DFS TEASER */}
+      <div style={{ padding: '60px 24px', background: '#0f172a', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12px)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: 860, margin: '0 auto', position: 'relative' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24 }}>
+            <div style={{ maxWidth: 480 }}>
+              <div style={{ display: 'inline-block', background: 'rgba(217,30,39,0.2)', border: '1px solid rgba(217,30,39,0.4)', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
+                <span style={{ color: '#ffffff', fontSize: 12, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase' }}>Legal in Most US States</span>
+              </div>
+              <h2 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: '#ffffff', margin: '0 0 12px', textTransform: 'uppercase', lineHeight: 1.1 }}>Daily Fantasy <span style={{ color: '#D91E27' }}>Sports</span></h2>
+              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, margin: '0 0 24px', lineHeight: 1.7 }}>Build your lineup, beat your opponents, win real cash. DFS is available in most US states — even where sports betting is restricted.</p>
+              <a href="/dfs" style={{ display: 'inline-block', background: '#D91E27', color: '#ffffff', padding: '14px 28px', borderRadius: 8, fontWeight: 800, fontSize: 14, textDecoration: 'none', textTransform: 'uppercase', letterSpacing: 0.5 }}>View DFS Sites</a>
+            </div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              {['DraftKings DFS', 'FanDuel DFS', 'Underdog Fantasy', 'PrizePicks'].map(function(name) {
+                return (
+                  <div key={name} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, padding: '10px 16px', fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.8)' }}>{name}</div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* TWO PATHS */}      <div style={{ padding: '80px 24px', background: NAVY, position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12px)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: RED }} />
         <div style={{ maxWidth: 860, margin: '0 auto', position: 'relative' }}>

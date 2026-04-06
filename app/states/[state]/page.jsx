@@ -1,89 +1,113 @@
-import { getSportsBooksByState } from '@/lib/sportsbooks'
-import { getStateNameFromCode } from '@/lib/utils'
-import SportsbookCard from '@/components/SportsbookCard'
-import Link from 'next/link'
+'use client';
+import { useParams, notFound } from 'next/navigation';
 
-export default function StatePage({ params }) {
-  const state = params?.state?.toUpperCase() || ''
-  const books = getSportsBooksByState(state)
-  const stateName = getStateNameFromCode(state)
+const NAVY = '#1B3A6B';
+const RED = '#D91E27';
+const WHITE = '#FFFFFF';
+const LIGHT = '#F4F6FA';
 
-  if (!stateName) {
-    return (
-      <div className="max-w-4xl mx-auto py-16 px-6 text-center">
-        <h1 className="text-3xl font-bold mb-4">State not found</h1>
-        <p className="text-gray-600 mb-8">This state code doesn't exist.</p>
-        <Link href="/sportsbooks" className="text-brand-red hover:underline">
-          View all states →
-        </Link>
-      </div>
-    )
-  }
+const STATE_NAMES = {
+  ny: 'New York', pa: 'Pennsylvania', nj: 'New Jersey', mi: 'Michigan',
+  il: 'Illinois', oh: 'Ohio', co: 'Colorado', tn: 'Tennessee',
+  va: 'Virginia', az: 'Arizona', ma: 'Massachusetts', md: 'Maryland',
+  la: 'Louisiana', in: 'Indiana', ia: 'Iowa', ks: 'Kansas',
+  wv: 'West Virginia', wy: 'Wyoming', ct: 'Connecticut',
+};
+
+const STATE_BOOKS = {
+  ny: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM'],
+  pa: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM', 'Fanatics'],
+  nj: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM', 'Fanatics'],
+  mi: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM', 'Fanatics'],
+  il: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM', 'Fanatics'],
+  oh: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM', 'Fanatics'],
+  co: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM', 'Fanatics'],
+  tn: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM', 'Fanatics'],
+  va: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM', 'Fanatics'],
+  az: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM', 'Fanatics'],
+  ma: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM'],
+  md: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM'],
+  la: ['FanDuel', 'DraftKings', 'Caesars', 'BetMGM', 'Fanatics'],
+  in: ['FanDuel', 'DraftKings', 'Caesars', 'BetMGM', 'Fanatics'],
+  ia: ['FanDuel', 'DraftKings', 'Caesars', 'BetMGM'],
+  ks: ['FanDuel', 'DraftKings', 'Caesars', 'Fanatics'],
+  wv: ['FanDuel', 'DraftKings', 'bet365', 'Caesars', 'BetMGM'],
+  wy: ['FanDuel', 'DraftKings', 'BetMGM'],
+  ct: ['FanDuel', 'DraftKings', 'bet365'],
+};
+
+const BOOK_DETAILS = {
+  'FanDuel': { offer: 'Bet $5, Get up to $300 Back Each Day for 10 Days', affiliateLink: 'https://wlfanduelus.adsrv.eacdn.com/C.ashx?btag=a_44859b_16c_&affid=21038&siteid=44859&adid=16&c=', bg: '#1059a4', initials: 'FD' },
+  'DraftKings': { offer: 'Bet $5, Get $200 in Bonus Bets Instantly', affiliateLink: 'https://dksb.sng.link/As9kz/uc22?_dl=https%3A%2F%2Fsportsbook.draftkings.com%2Fgateway%3Fs%3D103658189&pcid=422642&psn=3064&pcn=OSB_Bet5NUO&pscn=oddschecker_101GreatGoals&pcrn=WebReview&pscid=xx&pcrid=xx&wpcid=422642&wpsrc=3064&wpcn=OSB_Bet5NUO&wpscn=oddschecker_101GreatGoals&wpcrn=WebReview&wpscid=xx&wpcrid=xx&_forward_params=1', bg: '#1a1a2e', initials: 'DK' },
+  'bet365': { offer: 'Bet $5, Get $365 in Bonus Bets Win or Lose', affiliateLink: 'AFFILIATE_LINK_BET365', bg: '#027b5b', initials: 'B3' },
+  'Caesars': { offer: 'Bet $1, Double Your Winnings on Next 10 Wagers', affiliateLink: 'https://wlwilliamhillus.adsrv.eacdn.com/C.ashx?btag=a_26199b_2588c_&affid=465&siteid=26199&adid=2588&c=', bg: '#003087', initials: 'CS' },
+  'BetMGM': { offer: 'Get up to $1,500 Back in Bonus Bets if First Bet Loses', affiliateLink: 'https://mediaserver.betmgmpartners.com/renderBanner.do?zoneId=1727083', bg: '#c9a84c', initials: 'BM' },
+  'Fanatics': { offer: 'Bet $5, Get $200 in FanCash Immediately', affiliateLink: 'https://track.fanaticsbettingpartners.com/track/e3da5749-405e-4283-a8de-cb773323f82c?type=seo&s1=Confido52', bg: '#cc0000', initials: 'FA' },
+};
+
+export default function StatePage() {
+  const rawParams = useParams();
+  const state = (rawParams?.state || '').toString().toLowerCase();
+  const stateName = STATE_NAMES[state];
+  if (!stateName) return notFound();
+  const books = STATE_BOOKS[state] || [];
 
   return (
-    <div className="w-full">
-      {/* Hero */}
-      <section className="bg-brand-navy text-white py-12 px-6 text-center">
-        <h1 className="text-4xl font-bold mb-4">
-          Sportsbooks in {stateName}
-        </h1>
-        <p className="text-lg text-gray-200">
-          Find the best offers available for {stateName} residents
-        </p>
-      </section>
+    <div style={{ minHeight: '100vh', background: LIGHT, fontFamily: 'system-ui, sans-serif' }}>
+      <div style={{ background: NAVY, padding: '48px 24px 56px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 12px)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: RED }} />
+        <div style={{ position: 'relative', maxWidth: 700, margin: '0 auto' }}>
+          <div style={{ display: 'inline-block', background: 'rgba(217,30,39,0.2)', border: '1px solid rgba(217,30,39,0.4)', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
+            <span style={{ color: WHITE, fontSize: 12, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase' }}>Legal Sports Betting</span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(26px, 5vw, 42px)', fontWeight: 900, color: WHITE, margin: '0 0 14px', textTransform: 'uppercase', letterSpacing: -0.5 }}>{stateName} Sportsbooks</h1>
+          <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: 15, margin: '0 0 24px', lineHeight: 1.6 }}>The best legal sportsbook offers available in {stateName} right now. New customers only. Must be 21+ and physically located in {stateName}.</p>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 10, padding: '8px 16px' }}>
+            <span style={{ color: WHITE, fontSize: 13, fontWeight: 700 }}>{books.length} sportsbooks available in {stateName}</span>
+          </div>
+        </div>
+      </div>
 
-      {/* Content */}
-      <section className="max-w-6xl mx-auto py-12 px-6">
-        <div className="mb-8">
-          <Link
-            href="/sportsbooks"
-            className="text-brand-red hover:text-red-700 font-medium"
-          >
-            ← Back to all states
-          </Link>
+      <div style={{ maxWidth: 860, margin: '0 auto', padding: '32px 16px 60px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 32 }}>
+          {books.map(function(bookName, idx) {
+            const book = BOOK_DETAILS[bookName];
+            if (!book) return null;
+            return (
+              <div key={bookName} style={{ background: WHITE, borderRadius: 16, border: idx === 0 ? '2px solid ' + RED : '1px solid #e5e7eb', overflow: 'hidden', boxShadow: idx === 0 ? '0 4px 20px rgba(217,30,39,0.1)' : '0 2px 8px rgba(0,0,0,0.04)' }}>
+                {idx === 0 && <div style={{ background: RED, color: WHITE, fontSize: 10, fontWeight: 800, padding: '4px 12px', textTransform: 'uppercase', letterSpacing: 1, display: 'inline-block' }}>Top Pick in {stateName}</div>}
+                <div style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+                  <div style={{ width: 64, height: 64, borderRadius: 12, background: book.bg, color: WHITE, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 18, flexShrink: 0 }}>{book.initials}</div>
+                  <div style={{ flex: 1, minWidth: 180 }}>
+                    <div style={{ fontWeight: 900, fontSize: 18, color: NAVY, marginBottom: 4 }}>{bookName}</div>
+                    <div style={{ fontWeight: 700, fontSize: 15, color: '#111827', marginBottom: 8 }}>{book.offer}</div>
+                    <div style={{ fontSize: 11, color: '#9ca3af' }}>T&Cs apply. New customers only. 21+. Must be in {stateName}.</div>
+                  </div>
+                  <div style={{ flexShrink: 0, textAlign: 'center' }}>
+                    <button onClick={function() { if (book.affiliateLink.startsWith('AFFILIATE')) { alert('Link coming soon'); } else { window.open(book.affiliateLink, '_blank'); } }} style={{ background: RED, color: WHITE, border: 'none', borderRadius: 10, padding: '14px 28px', fontSize: 15, fontWeight: 800, cursor: 'pointer', textTransform: 'uppercase', letterSpacing: 0.5, boxShadow: '0 4px 12px rgba(217,30,39,0.3)', whiteSpace: 'nowrap' }}>
+                      Claim Offer
+                    </button>
+                    <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 6 }}>New customers only</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        {books.length > 0 ? (
-          <>
-            <p className="text-gray-600 mb-8">
-              {books.length} sportsbook{books.length !== 1 ? 's' : ''} available in {stateName}
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-              {books.map(book => (
-                <SportsbookCard key={book.id} sportsbook={book} />
-              ))}
-            </div>
-          </>
-        ) : (
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
-            <p className="text-gray-700">
-              Sports betting is not yet available in {stateName}.
-            </p>
-            <p className="text-sm text-gray-600 mt-2">
-              Check back soon for updates.
-            </p>
-          </div>
-        )}
-      </section>
+        <div style={{ background: WHITE, borderRadius: 14, border: '1px solid #e5e7eb', padding: '24px 28px', marginBottom: 16 }}>
+          <h2 style={{ fontSize: 18, fontWeight: 900, color: NAVY, margin: '0 0 16px', textTransform: 'uppercase' }}>Sports Betting in {stateName}</h2>
+          <p style={{ fontSize: 14, color: '#4b5563', lineHeight: 1.8, margin: '0 0 12px' }}>Sports betting is legal in {stateName}. You must be 21 years of age or older and physically located within {stateName} state lines to place bets. Online and mobile sports betting is available via all the sportsbook apps listed above.</p>
+          <p style={{ fontSize: 14, color: '#4b5563', lineHeight: 1.8, margin: 0 }}>All sportsbooks listed on this page are fully licensed and regulated in {stateName}. BetAndPlayUSA earns an affiliate commission when you sign up through our links. This does not affect the welcome bonus you receive.</p>
+        </div>
 
-      {/* SEO Info */}
-      <section className="max-w-6xl mx-auto px-6 py-12 bg-gray-50">
-        <h2 className="text-2xl font-bold mb-4">About {stateName} Sports Betting</h2>
-        <p className="text-gray-600 mb-4">
-          {stateName} has legalized online sports betting through multiple sportsbooks. BetAndPlayUSA brings you the top options in the state with the best current offers and fastest signup bonuses.
-        </p>
-        <p className="text-gray-600">
-          Sign up with any of the sportsbooks above, deposit $20, place your first bet, and upload proof to claim your reward.
-        </p>
-      </section>
+        <div style={{ background: WHITE, borderRadius: 14, border: '1px solid #e5e7eb', padding: '20px 24px' }}>
+          <p style={{ fontSize: 12, color: '#9ca3af', margin: 0, lineHeight: 1.7 }}>
+            <strong style={{ color: '#6b7280' }}>Affiliate disclosure:</strong> BetAndPlayUSA earns a commission when you sign up through our links. Must be 21+ and physically located in {stateName}. Gambling problem? Call 1-800-GAMBLER.
+          </p>
+        </div>
+      </div>
     </div>
-  )
-}
-
-export async function generateStaticParams() {
-  // User will need to update this based on their states
-  const states = ['CA', 'TX', 'FL', 'NY', 'PA', 'NJ', 'CO', 'IL', 'MI', 'VA']
-  return states.map(state => ({
-    state: state.toLowerCase()
-  }))
+  );
 }

@@ -8,11 +8,12 @@ const LIGHT = '#F4F6FA';
 const CHARCOAL = '#111827';
 
 const SPORTSBOOKS = [
-  { id: 'fanduel', name: 'FanDuel', bg: '#1059a4', text: '#fff', offer: 'Bet $5, Get up to $3,000 in Bonus Bets', logo: '/fanduel.png' },
+  { id: 'fanduel', name: 'FanDuel', bg: '#1059a4', text: '#fff', offer: 'Bet $5, Get up to $300 Back Each Day for 10 Days', logo: '/fanduel.png' },
   { id: 'draftkings', name: 'DraftKings', bg: '#1a1a2e', text: '#00d4aa', offer: 'Bet $5, Get $200 in Bonus Bets Instantly', logo: '/draftkings.png' },
-  { id: 'caesars', name: 'Caesars', bg: '#003087', text: '#FFD700', offer: 'Bet $1, Get 10x 100% Profit Boost Tokens', logo: '/caesars.png' },
+  { id: 'bet365', name: 'bet365', bg: '#027b5b', text: '#ffffff', offer: 'Bet $5, Get $365 in Bonus Bets Win or Lose', logo: '/bet365.png' },
+  { id: 'caesars', name: 'Caesars', bg: '#003087', text: '#FFD700', offer: 'Bet $1, Double Your Winnings on Next 10 Wagers', logo: '/caesars.png' },
   { id: 'fanatics', name: 'Fanatics', bg: '#cc0000', text: '#fff', offer: 'Bet $5, Get $200 in FanCash Immediately', logo: '/fanatics.png' },
-  { id: 'betmgm', name: 'BetMGM', bg: '#c9a84c', text: '#1a1a1a', offer: 'First Bet Offer Up to $1,500 in Bonus Bets', logo: '/betmgm.png' },
+  { id: 'betmgm', name: 'BetMGM', bg: '#c9a84c', text: '#1a1a1a', offer: 'Get up to $1,500 Back in Bonus Bets if First Bet Loses', logo: '/betmgm.png' },
 ];
 
 const CONSENTS = [
@@ -109,6 +110,20 @@ export default function JoinPage() {
             <div style={{ fontSize: 18, fontWeight: 900, color: WHITE }}>@{form.telegram}</div>
           </div>
           <p style={{ fontSize: 13, color: '#9ca3af', margin: 0 }}>Confirmation email sent to {form.email}</p>
+          <div style={{ marginTop: 24, background: '#f4f6fa', borderRadius: 14, padding: '20px 24px', textAlign: 'left' }}>
+            <div style={{ fontSize: 14, fontWeight: 800, color: '#1B3A6B', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.3 }}>Share with friends</div>
+            <p style={{ fontSize: 13, color: '#6b7280', margin: '0 0 12px', lineHeight: 1.6 }}>Know someone who would want free betting tips? Share BetAndPlayUSA with them.</p>
+            <button onClick={function() {
+              if (navigator.share) {
+                navigator.share({ title: 'BetAndPlayUSA', text: 'Get free betting tips by signing up with a sportsbook through BetAndPlayUSA', url: 'https://betandplayusa.com/join' });
+              } else {
+                navigator.clipboard.writeText('https://betandplayusa.com/join');
+                alert('Link copied to clipboard!');
+              }
+            }} style={{ background: '#1B3A6B', color: '#fff', border: 'none', borderRadius: 8, padding: '10px 20px', fontSize: 13, fontWeight: 800, cursor: 'pointer', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+              Share Link
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -124,6 +139,10 @@ export default function JoinPage() {
           <div style={{ display: 'inline-block', background: 'rgba(217,30,39,0.2)', border: '1px solid rgba(217,30,39,0.4)', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
             <span style={{ color: WHITE, fontSize: 12, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase' }}>Exclusive Telegram Access</span>
           </div>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(217,30,39,0.2)', border: '1px solid rgba(217,30,39,0.5)', borderRadius: 20, padding: '5px 14px', marginBottom: 14 }}>
+            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#D91E27', display: 'inline-block', animation: 'pulse 2s infinite' }} />
+            <span style={{ color: '#fff', fontSize: 12, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase' }}>Limited spots available</span>
+          </div>
           <h1 style={{ fontSize: 'clamp(26px, 5vw, 38px)', fontWeight: 900, color: WHITE, margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: -0.5, lineHeight: 1.1 }}>
             Sign Up. Bet. <span style={{ color: RED }}>Get Tips.</span>
           </h1>
@@ -136,6 +155,14 @@ export default function JoinPage() {
                 <div key={v} style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 20, padding: '6px 14px', fontSize: 13, color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>{v}</div>
               );
             })}
+          </div>
+          <div style={{ marginTop: 24, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 12, padding: '12px 20px', display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+            <div style={{ display: 'flex', gap: -4 }}>
+              {['J', 'M', 'S', 'R', 'T'].map(function(initial, i) {
+                return <div key={i} style={{ width: 28, height: 28, borderRadius: '50%', background: '#D91E27', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, marginLeft: i === 0 ? 0 : -6, border: '2px solid #1B3A6B' }}>{initial}</div>;
+              })}
+            </div>
+            <span style={{ color: 'rgba(255,255,255,0.9)', fontSize: 13, fontWeight: 600 }}>2,400+ members already in the group</span>
           </div>
         </div>
       </div>
@@ -228,8 +255,19 @@ export default function JoinPage() {
                 <div style={{ fontWeight: 700, color: NAVY, marginBottom: 4 }}>Tap to upload screenshots</div>
                 <div style={{ fontSize: 13, color: '#9ca3af' }}>JPG, PNG or MP4 \u2014 Max 5 files</div>
                 <input ref={fileInputRef} type="file" multiple accept="image/*,video/mp4" onChange={handleFileChange} style={{ display: 'none' }} />
-              </div>
-              {files.length > 0 && (
+              </div>              <div style={{ background: '#f0f4ff', borderRadius: 10, padding: '14px 16px', marginBottom: 14 }}>
+                <div style={{ fontSize: 13, fontWeight: 800, color: '#1B3A6B', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.3 }}>What to include in your screenshot</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  {['Your full name visible on the account', 'Account balance or deposit confirmation', 'Your first bet placed (amount and selection)', 'Date visible on the screenshot'].map(function(tip, i) {
+                    return (
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <div style={{ width: 20, height: 20, borderRadius: '50%', background: '#D91E27', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, flexShrink: 0 }}>{i+1}</div>
+                        <span style={{ fontSize: 13, color: '#4b5563' }}>{tip}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>              {files.length > 0 && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {files.map(function(f, i) {
                     return (
