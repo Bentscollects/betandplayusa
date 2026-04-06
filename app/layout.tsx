@@ -44,7 +44,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <Link href="/activate" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Activate</Link>
                 <Link href="/join" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Join</Link>
                 <Link href="/sportsbooks" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Sportsbooks</Link>
-                <Link href="/privacy" style={{ backgroundColor: white, color: brandNavy, padding: '10px 18px', borderRadius: 9999, textDecoration: 'none', fontWeight: 700 }}>Get Started</Link>
+                <Link href="/join" style={{ backgroundColor: white, color: brandNavy, padding: '10px 18px', borderRadius: 9999, textDecoration: 'none', fontWeight: 700 }}>Get Started</Link>
               </nav>
               <div className="mobile-nav-hamburger" style={{ display: 'flex', alignItems: 'center' }}>
                 <MobileNav />
@@ -52,30 +52,50 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </div>
           </header>
           <main style={{ flex: 1 }}>{children}</main>
-          <footer style={{ backgroundColor: brandNavy, color: white, padding: '40px 32px' }}>
-            <div style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 24 }}>
-              <div style={{ minWidth: 260 }}>
-                <h3 style={{ margin: 0, fontSize: 18, fontWeight: 700 }}>BetAndPlayUSA</h3>
-                <p style={{ marginTop: 12, maxWidth: 320, lineHeight: 1.8, color: '#d1d5db' }}>
-                  Premium sportsbook rewards with local host access and social acquisition offers.
-                </p>
-              </div>
-              <div style={{ minWidth: 180 }}>
-                <h4 style={{ margin: 0, fontSize: 16, fontWeight: 700 }}>Quick links</h4>
-                <div style={{ marginTop: 12, display: 'grid', gap: 10, color: '#d1d5db' }}>
-                  <Link href="/privacy" style={{ color: '#d1d5db', textDecoration: 'none' }}>Privacy</Link>
-                  <Link href="/terms" style={{ color: '#d1d5db', textDecoration: 'none' }}>Terms</Link>
-                  <Link href="/cookies" style={{ color: '#d1d5db', textDecoration: 'none' }}>Cookies</Link>
-                </div>
-              </div>
-              <div style={{ minWidth: 220 }}>
-                <h4 style={{ margin: 0, fontSize: 16, fontWeight: 700 }}>Need help?</h4>
-                <p style={{ marginTop: 12, color: '#d1d5db', lineHeight: 1.8 }}>
-                  support@betandplayusa.com<br />1-800-GAMBLER
-                </p>
-              </div>
-            </div>
-          </footer>
+          <footer style={{ backgroundColor: '#1B3A6B', color: '#ffffff', padding: '48px 32px 24px' }}>
+  <div style={{ position: 'relative' }}>
+    <div style={{ position: 'absolute', top: -48, left: 0, right: 0, height: 4, background: '#D91E27' }} />
+  </div>
+  <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 40, marginBottom: 48 }}>
+      <div style={{ minWidth: 260, maxWidth: 340 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+          <span style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: '#D91E27', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>⭐</span>
+          <span style={{ fontWeight: 800, fontSize: 18 }}>Bet<span style={{ color: '#D91E27' }}>&amp;</span>PlayUSA</span>
+        </div>
+        <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, fontSize: 14, margin: '0 0 16px' }}>Premium sportsbook rewards with local host access and social acquisition offers across 30+ US states.</p>
+        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, margin: 0 }}>Must be 21+. Please gamble responsibly.</p>
+      </div>
+      <div style={{ minWidth: 140 }}>
+        <h4 style={{ margin: '0 0 16px', fontSize: 13, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1, color: 'rgba(255,255,255,0.5)' }}>Quick Links</h4>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <Link href="/activate" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>Activate</Link>
+          <Link href="/join" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>Join Telegram</Link>
+          <Link href="/sportsbooks" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>Sportsbooks</Link>
+        </div>
+      </div>
+      <div style={{ minWidth: 140 }}>
+        <h4 style={{ margin: '0 0 16px', fontSize: 13, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1, color: 'rgba(255,255,255,0.5)' }}>Legal</h4>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <Link href="/privacy" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>Privacy Policy</Link>
+          <Link href="/terms" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>Terms</Link>
+          <Link href="/cookies" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>Cookies</Link>
+          <Link href="/responsible-gambling" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>Responsible Gambling</Link>
+        </div>
+      </div>
+      <div style={{ minWidth: 180 }}>
+        <h4 style={{ margin: '0 0 16px', fontSize: 13, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1, color: 'rgba(255,255,255,0.5)' }}>Need Help?</h4>
+        <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, margin: '0 0 8px' }}>support@betandplayusa.com</p>
+        <p style={{ color: '#D91E27', fontSize: 15, fontWeight: 800, margin: '0 0 16px' }}>1-800-GAMBLER</p>
+        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, lineHeight: 1.6, margin: 0 }}>If you or someone you know has a gambling problem, call the National Problem Gambling Helpline.</p>
+      </div>
+    </div>
+    <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 24, display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 12 }}>
+      <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, margin: 0 }}>© 2026 BetAndPlayUSA. All rights reserved. This site is for entertainment purposes only.</p>
+      <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, margin: 0 }}>BetAndPlayUSA is an affiliate marketing website.</p>
+    </div>
+  </div>
+</footer>
         </div>
       </body>
     </html>

@@ -1,71 +1,35 @@
-export default function CookiePage() {
+'use client';
+const NAVY = '#1B3A6B';
+const RED = '#D91E27';
+export default function CookiesPage() {
   return (
-    <article className="max-w-4xl mx-auto px-6 py-16">
-      <h1 className="text-4xl font-bold mb-8">Cookie Policy</h1>
-      <div className="prose prose-sm max-w-none">
-        <p className="mb-4 text-gray-600">Last updated: April 2024</p>
-
-        <h2 className="text-2xl font-bold mt-8 mb-4">What Are Cookies?</h2>
-        <p className="mb-4">
-          Cookies are small files stored on your device that help us improve your experience on BetAndPlayUSA. They are typically small text files with a unique identifier.
-        </p>
-
-        <h2 className="text-2xl font-bold mt-8 mb-4">Cookies We Use</h2>
-
-        <h3 className="text-lg font-semibold mt-6 mb-3">Essential Cookies</h3>
-        <p className="mb-4">
-          These are necessary for the site to function:
-        </p>
-        <ul className="list-disc list-inside mb-4 space-y-2">
-          <li><strong>Detected state:</strong> Remembers your detected geographic state to show you relevant sportsbooks</li>
-          <li><strong>Consent preferences:</strong> Stores your cookie and privacy consent choices</li>
-          <li><strong>Session tokens:</strong> Used for admin login sessions (only for authenticated users)</li>
-        </ul>
-
-        <h3 className="text-lg font-semibold mt-6 mb-3">Analytics Cookies</h3>
-        <p className="mb-4">
-          We may use simple analytics to understand traffic patterns (no third-party tracking).
-        </p>
-
-        <h3 className="text-lg font-semibold mt-6 mb-3">Functional Cookies</h3>
-        <p className="mb-4">
-          These help us remember your preferences and improve your experience (form data, language preference, etc.).
-        </p>
-
-        <h2 className="text-2xl font-bold mt-8 mb-4">Third-Party Cookies</h2>
-        <p className="mb-4">
-          When you click an affiliate link to a sportsbook, that sportsbook may set its own cookies. Please refer to their cookie policies.
-        </p>
-
-        <h2 className="text-2xl font-bold mt-8 mb-4">Managing Cookies</h2>
-        <p className="mb-4">
-          You have full control over cookies in your browser:
-        </p>
-        <ul className="list-disc list-inside mb-4 space-y-2">
-          <li><strong>Chrome:</strong> Settings → Privacy and security → Cookies and other site data</li>
-          <li><strong>Firefox:</strong> Settings → Privacy & Security → Cookies and Site Data</li>
-          <li><strong>Safari:</strong> Preferences → Privacy → Cookies and website data</li>
-          <li><strong>Edge:</strong> Settings → Privacy, search, and services → Clear browsing data</li>
-        </ul>
-
-        <p className="mb-4 mt-4">
-          <strong>Note:</strong> Disabling cookies may affect site functionality. For example, we won't remember your state, so you'd see all sportsbooks rather than just those available in your location.
-        </p>
-
-        <h2 className="text-2xl font-bold mt-8 mb-4">Cookie Consent Banner</h2>
-        <p className="mb-4">
-          On your first visit, you'll see our cookie consent banner. You can:
-        </p>
-        <ul className="list-disc list-inside mb-4 space-y-2">
-          <li><strong>Accept:</strong> Allow all cookies (recommended for full functionality)</li>
-          <li><strong>Decline:</strong> Disable non-essential cookies (site still works, but with reduced features)</li>
-        </ul>
-
-        <h2 className="text-2xl font-bold mt-8 mb-4">Questions?</h2>
-        <p className="mb-4">
-          Contact us: <strong>privacy@betandplayusa.com</strong>
-        </p>
+    <div style={{ minHeight: '100vh', background: '#f4f6fa', fontFamily: 'system-ui, sans-serif' }}>
+      <div style={{ background: NAVY, padding: '40px 24px', position: 'relative' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: RED }} />
+        <div style={{ maxWidth: 760, margin: '0 auto' }}>
+          <div style={{ display: 'inline-block', background: 'rgba(217,30,39,0.2)', border: '1px solid rgba(217,30,39,0.4)', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
+            <span style={{ color: '#fff', fontSize: 12, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase' }}>Legal</span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(24px, 5vw, 36px)', fontWeight: 900, color: '#fff', margin: '0 0 8px', textTransform: 'uppercase' }}>Cookie Policy</h1>
+          <p style={{ color: 'rgba(255,255,255,0.6)', margin: 0, fontSize: 14 }}>Last updated: April 2026</p>
+        </div>
       </div>
-    </article>
-  )
+      <div style={{ maxWidth: 760, margin: '0 auto', padding: '40px 24px 80px' }}>
+        {[
+          { title: '1. What Are Cookies', content: 'Cookies are small text files stored on your device when you visit a website. They help websites remember your preferences and improve your experience.' },
+          { title: '2. Cookies We Use', content: 'We use essential cookies only. These include cookies to remember your consent preferences and to maintain your session while using the site. We do not use advertising, tracking, or third-party analytics cookies.' },
+          { title: '3. Managing Cookies', content: 'You can control cookies through your browser settings. Disabling essential cookies may affect the functionality of the site. Most browsers allow you to view, delete, and block cookies from specific websites.' },
+          { title: '4. Third Party Cookies', content: "Our affiliate sportsbook partners may set their own cookies when you click through to their sites. We have no control over these cookies. Please refer to each sportsbook's cookie policy for more information." },
+          { title: '5. Contact', content: 'For any questions about our use of cookies, contact us at privacy@betandplayusa.com.' },
+        ].map(function(section) {
+          return (
+            <div key={section.title} style={{ background: '#fff', borderRadius: 14, border: '1px solid #e5e7eb', padding: '24px 28px', marginBottom: 16, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+              <h2 style={{ fontSize: 18, fontWeight: 800, color: NAVY, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 0.3 }}>{section.title}</h2>
+              <p style={{ color: '#4b5563', lineHeight: 1.8, margin: 0, fontSize: 15 }}>{section.content}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }

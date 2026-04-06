@@ -10,7 +10,7 @@ const navLinks = [
   { href: "/activate", label: "Activate" },
   { href: "/join", label: "Join" },
   { href: "/sportsbooks", label: "Sportsbooks" },
-  { href: "/privacy", label: "Get Started", isButton: true },
+  { href: "/join", label: "Get Started", isButton: true },
 ];
 
 export default function MobileNav() {

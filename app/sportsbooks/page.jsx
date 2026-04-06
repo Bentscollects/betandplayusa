@@ -84,9 +84,11 @@ export default function SportsbooksPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#f8f9fb' }}>
 
-      <div style={{ background: '#0B2545', padding: '48px 24px 56px', textAlign: 'center' }}>
-        <div style={{ maxWidth: 640, margin: '0 auto' }}>
-          <h1 style={{ fontSize: 'clamp(26px, 5vw, 40px)', fontWeight: 800, color: '#fff', margin: '0 0 14px', lineHeight: 1.15 }}>Top Sportsbooks</h1>
+      <div style={{ background: '#1B3A6B', padding: '48px 24px 56px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 12px)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: '#D91E27' }} />
+        <div style={{ maxWidth: 640, margin: '0 auto', position: 'relative' }}>
+          <h1 style={{ fontSize: 'clamp(26px, 5vw, 40px)', fontWeight: 900, color: '#fff', margin: '0 0 14px', lineHeight: 1.15, textTransform: 'uppercase' }}>Top Sportsbooks</h1>
           <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: 16, margin: '0 0 28px', lineHeight: 1.6 }}>Compare the best sportsbook offers available in your state. New customers only. Must be 21+.</p>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(255,255,255,0.1)', borderRadius: 12, padding: '10px 16px' }}>
             <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14, fontWeight: 500, whiteSpace: 'nowrap' }}>Filter by state:</span>
@@ -142,7 +144,7 @@ export default function SportsbooksPage() {
                   <div style={{ flexShrink: 0 }}>
                     <button
                       onClick={function() { handleClaim(book); }}
-                      style={{ background: '#E63946', color: '#fff', border: 'none', borderRadius: 10, padding: '12px 24px', fontSize: 15, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                      style={{ background: '#D91E27', color: '#fff', border: 'none', borderRadius: 10, padding: '12px 24px', fontSize: 15, fontWeight: 800, cursor: 'pointer', whiteSpace: 'nowrap', textTransform: 'uppercase' }}
                     >
                       Claim offer
                     </button>

@@ -155,7 +155,7 @@ export default function ActivatePage() {
                 disabled={!code || validating}
                 style={{ width: '100%', marginTop: 16, padding: '14px', borderRadius: 10, border: 'none', background: code && !validating ? RED : '#e5e7eb', color: code && !validating ? WHITE : '#9ca3af', fontSize: 15, fontWeight: 800, cursor: code && !validating ? 'pointer' : 'not-allowed', textTransform: 'uppercase', letterSpacing: 0.5 }}
               >
-                {validating ? 'Checking...' : 'Verify Code →'}
+                {validating ? 'Checking...' : 'Verify Code'}
               </button>
             </div>
             <div style={{ marginTop: 24, background: WHITE, borderRadius: 16, border: '1px solid #e5e7eb', padding: '20px 24px' }}>
@@ -192,7 +192,7 @@ export default function ActivatePage() {
                 {SPORTSBOOKS.map(function(book) {
                   const selected = selectedBook && selectedBook.id === book.id;
                   return (
-                    <button key={book.id} onClick={function() { setSelectedBook(book); }} style={{ background: selected ? '#f0f4ff' : '#fff', border: selected ? '2px solid ' + NAVY : '2px solid #e5e7eb', borderRadius: 12, padding: '14px 16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 12, textAlign: 'left', width: '100%', boxShadow: selected ? '0 0 0 3px rgba(27,58,107,0.08)' : 'none' }}>
+                    <button key={book.id} type="button" autoComplete="off" onClick={function() { setSelectedBook(book); }} style={{ background: selected ? '#f0f4ff' : '#fff', border: selected ? '2px solid ' + NAVY : '2px solid #e5e7eb', borderRadius: 12, padding: '14px 16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 12, textAlign: 'left', width: '100%', boxShadow: selected ? '0 0 0 3px rgba(27,58,107,0.08)' : 'none' }}>
                       <div style={{ width: 46, height: 46, borderRadius: 10, background: book.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 4, boxSizing: 'border-box' }}>
                         <img src={book.logo} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                       </div>
@@ -200,20 +200,20 @@ export default function ActivatePage() {
                         <div style={{ fontWeight: 800, color: NAVY, fontSize: 15 }}>{book.name}</div>
                         <div style={{ color: '#6b7280', fontSize: 13, marginTop: 2 }}>{book.offer}</div>
                       </div>
-                      {selected && <div style={{ width: 24, height: 24, borderRadius: '50%', background: NAVY, color: WHITE, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, flexShrink: 0 }}>✓</div>}
+                      {selected && <div style={{ width: 24, height: 24, borderRadius: '50%', background: NAVY, color: WHITE, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, flexShrink: 0, fontWeight: 900 }}>✓</div>}
                     </button>
                   );
                 })}
               </div>
               <button onClick={function() { if (selectedBook) setStep(3); }} disabled={!selectedBook} style={{ width: '100%', marginTop: 20, padding: 14, borderRadius: 10, border: 'none', background: selectedBook ? RED : '#e5e7eb', color: selectedBook ? WHITE : '#9ca3af', fontSize: 15, fontWeight: 800, cursor: selectedBook ? 'pointer' : 'not-allowed', textTransform: 'uppercase', letterSpacing: 0.5 }}>
-                Continue →
+                Continue
               </button>
             </div>
           </div>
         )}
 
         {step === 3 && (
-          <div>
+          <div style={{ boxSizing: 'border-box', width: '100%', padding: '0 16px' }}>
             <button onClick={function() { setStep(2); }} style={{ background: 'none', border: 'none', color: '#6b7280', fontSize: 14, cursor: 'pointer', marginBottom: 20, padding: 0, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}>← Back</button>
             <div style={{ background: WHITE, borderRadius: 16, border: '1px solid #e5e7eb', padding: '28px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', marginBottom: 16 }}>
               <h2 style={{ fontSize: 20, fontWeight: 800, color: NAVY, margin: '0 0 6px', textTransform: 'uppercase' }}>Your Details</h2>
@@ -292,7 +292,7 @@ export default function ActivatePage() {
 
             {error && <p style={{ color: RED, fontSize: 14, marginBottom: 12, textAlign: 'center', fontWeight: 600 }}>{error}</p>}
             <button onClick={handleSubmit} disabled={uploading} style={{ width: '100%', padding: 16, borderRadius: 12, border: 'none', background: uploading ? '#9ca3af' : RED, color: WHITE, fontSize: 16, fontWeight: 800, cursor: uploading ? 'not-allowed' : 'pointer', textTransform: 'uppercase', letterSpacing: 0.5 }}>
-              {uploading ? 'Submitting...' : 'Submit Proof →'}
+              {uploading ? 'Submitting...' : 'Submit Proof'}
             </button>
             <p style={{ fontSize: 12, color: '#9ca3af', textAlign: 'center', marginTop: 16, lineHeight: 1.6 }}>Must be 21+. Gambling problem? Call 1-800-GAMBLER.</p>
           </div>

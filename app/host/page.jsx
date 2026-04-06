@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
 
-const navy = '#0B2545'
-const red = '#E63946'
+const navy = '#1B3A6B'
+const red = '#D91E27'
 const lightGray = '#F8FAFC'
 const green = '#10B981'
 
@@ -243,10 +243,12 @@ export default function HostPortal() {
                 border: 'none',
                 borderRadius: 8,
                 fontSize: 16,
-                fontWeight: 600,
+                fontWeight: 800,
                 cursor: loading ? 'default' : 'pointer',
                 opacity: loading ? 0.6 : 1,
-                transition: 'opacity 0.2s'
+                transition: 'opacity 0.2s',
+                textTransform: 'uppercase',
+                letterSpacing: 0.5,
               }}
             >
               {loading ? 'Loading...' : 'Enter Portal'}
@@ -279,7 +281,10 @@ export default function HostPortal() {
           marginBottom: 0,
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'center'
+          alignItems: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+          borderTop: '4px solid #D91E27',
         }}>
           <div>
             <h1 style={{
