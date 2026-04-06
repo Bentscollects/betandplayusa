@@ -17,6 +17,10 @@ const SPORTSBOOKS = [
     affiliateLink: 'https://wlfanduelus.adsrv.eacdn.com/C.ashx?btag=a_44859b_16c_&affid=21038&siteid=44859&adid=16&c=',
     states: ['AZ', 'CO', 'CT', 'IL', 'IN', 'IA', 'KS', 'LA', 'MD', 'MA', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV', 'WY'],
     tag: 'Top Pick',
+    rating: 4.9,
+    bestFor: 'NFL & NBA',
+    payoutSpeed: 'Same day',
+    limitedTime: true,
   },
   {
     id: 'draftkings',
@@ -28,6 +32,9 @@ const SPORTSBOOKS = [
     affiliateLink: 'https://dksb.sng.link/As9kz/uc22?_dl=https%3A%2F%2Fsportsbook.draftkings.com%2Fgateway%3Fs%3D103658189&pcid=422642&psn=3064&pcn=OSB_Bet5NUO&pscn=oddschecker_101GreatGoals&pcrn=WebReview&pscid=xx&pcrid=xx&wpcid=422642&wpsrc=3064&wpcn=OSB_Bet5NUO&wpscn=oddschecker_101GreatGoals&wpcrn=WebReview&wpscid=xx&wpcrid=xx&_forward_params=1',
     states: ['AZ', 'CO', 'CT', 'IL', 'IN', 'IA', 'KS', 'LA', 'MD', 'MA', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV', 'WY'],
     tag: null,
+    rating: 4.8,
+    bestFor: 'All sports',
+    payoutSpeed: 'Same day',
   },
   {
     id: 'caesars',
@@ -39,6 +46,9 @@ const SPORTSBOOKS = [
     affiliateLink: 'https://wlwilliamhillus.adsrv.eacdn.com/C.ashx?btag=a_26199b_2588c_&affid=465&siteid=26199&adid=2588&c=',
     states: ['AZ', 'CO', 'IL', 'IN', 'IA', 'LA', 'MD', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV'],
     tag: null,
+    rating: 4.6,
+    bestFor: 'Promos & boosts',
+    payoutSpeed: '1-2 days',
   },
   {
     id: 'fanatics',
@@ -50,6 +60,9 @@ const SPORTSBOOKS = [
     affiliateLink: 'https://track.fanaticsbettingpartners.com/track/e3da5749-405e-4283-a8de-cb773323f82c?type=seo&s1=Confido52',
     states: ['AZ', 'CO', 'IL', 'IN', 'KS', 'LA', 'MD', 'MA', 'MI', 'NJ', 'OH', 'PA', 'TN', 'VA'],
     tag: null,
+    rating: 4.5,
+    bestFor: 'Parlays',
+    payoutSpeed: '1-2 days',
   },
   {
     id: 'betmgm',
@@ -61,6 +74,9 @@ const SPORTSBOOKS = [
     affiliateLink: 'https://mediaserver.betmgmpartners.com/renderBanner.do?zoneId=1727083',
     states: ['AZ', 'CO', 'IL', 'IN', 'IA', 'LA', 'MD', 'MA', 'MI', 'NJ', 'NY', 'OH', 'PA', 'TN', 'VA', 'WV', 'WY'],
     tag: null,
+    rating: 4.7,
+    bestFor: 'Casino & sports',
+    payoutSpeed: '24 hours',
   },
 ];
 
@@ -117,6 +133,9 @@ export default function SportsbooksPage() {
                 {book.tag && (
                   <div style={{ background: RED, color: WHITE, fontSize: 10, fontWeight: 800, padding: '4px 12px', textTransform: 'uppercase', letterSpacing: 1, display: 'inline-block' }}>{book.tag}</div>
                 )}
+                {book.limitedTime && !book.tag && (
+                  <div style={{ background: '#f59e0b', color: '#fff', fontSize: 10, fontWeight: 800, padding: '4px 12px', textTransform: 'uppercase', letterSpacing: 1, display: 'inline-block' }}>Limited Time</div>
+                )}
                 <div style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
                   <div style={{ width: 64, height: 64, borderRadius: 12, background: book.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 6, boxSizing: 'border-box' }}>
                     <img src={book.logo} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
@@ -125,6 +144,19 @@ export default function SportsbooksPage() {
                     <div style={{ fontWeight: 900, fontSize: 18, color: NAVY, marginBottom: 4 }}>{book.name}</div>
                     <div style={{ fontWeight: 700, fontSize: 15, color: '#111827', marginBottom: 4 }}>{book.offer}</div>
                     <div style={{ fontSize: 13, color: '#6b7280' }}>{book.details}</div>
+                    <div style={{ display: 'flex', gap: 16, marginTop: 8, flexWrap: 'wrap' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                        <span style={{ color: '#f59e0b', fontSize: 13, fontWeight: 800 }}>{'★'.repeat(Math.floor(book.rating))}</span>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: '#374151' }}>{book.rating}</span>
+                      </div>
+                      <div style={{ fontSize: 12, color: '#6b7280', display: 'flex', alignItems: 'center', gap: 4 }}>
+                        <span style={{ fontWeight: 700, color: '#1B3A6B' }}>Best for:</span> {book.bestFor}
+                      </div>
+                      <div style={{ fontSize: 12, color: '#6b7280', display: 'flex', alignItems: 'center', gap: 4 }}>
+                        <span style={{ fontWeight: 700, color: '#1B3A6B' }}>Payout:</span> {book.payoutSpeed}
+                      </div>
+                    </div>
+                    <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 6 }}>T&Cs apply. New customers only. 21+. Min deposit required. State restrictions apply.</div>
                   </div>
                   <div style={{ flexShrink: 0, textAlign: 'center' }}>
                     <button onClick={function() { handleClaim(book); }} style={{ background: RED, color: WHITE, border: 'none', borderRadius: 10, padding: '14px 28px', fontSize: 15, fontWeight: 800, cursor: 'pointer', textTransform: 'uppercase', letterSpacing: 0.5, boxShadow: '0 4px 12px rgba(217,30,39,0.3)', display: 'block', whiteSpace: 'nowrap' }}>

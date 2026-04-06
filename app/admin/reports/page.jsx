@@ -230,7 +230,7 @@ export default function AdminReports() {
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
                 <thead style={{ background: '#f9fafb' }}>
                   <tr>
-                    {['Date', 'Name', 'Sportsbook', 'Type', 'Venue', 'Status', 'Est. CPA'].map(function(h) {
+                    {['Date', 'Name', 'Sportsbook', 'Type', 'Venue', 'Status', 'Est. CPA', 'Paid Out'].map(function(h) {
                       return <th key={h} style={{ padding: '10px 16px', textAlign: 'left', fontSize: 11, fontWeight: 700, color: '#6b7280', borderBottom: '2px solid #e5e7eb', whiteSpace: 'nowrap', textTransform: 'uppercase' }}>{h}</th>;
                     })}
                   </tr>
@@ -251,6 +251,13 @@ export default function AdminReports() {
                         </td>
                         <td style={{ padding: '10px 16px', borderBottom: '1px solid #f1f5f9', fontWeight: 700, color: s.status === 'approved' ? RED : '#9ca3af' }}>
                           {s.status === 'approved' ? '$' + (CPA_RATES[s.sportsbook] || 0) : '\u2014'}
+                        </td>
+                        <td style={{ padding: '10px 16px', borderBottom: '1px solid #f1f5f9' }}>
+                          {s.status === 'approved' ? (
+                            <button style={{ background: s.paid_out ? '#dcfce7' : '#f1f5f9', color: s.paid_out ? '#166534' : '#6b7280', border: 'none', borderRadius: 6, padding: '4px 10px', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>
+                              {s.paid_out ? 'Paid' : 'Mark Paid'}
+                            </button>
+                          ) : <span style={{ color: '#e5e7eb' }}>—</span>}
                         </td>
                       </tr>
                     );

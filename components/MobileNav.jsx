@@ -8,9 +8,11 @@ const white = "#ffffff";
 
 const navLinks = [
   { href: "/activate", label: "Activate" },
-  { href: "/join", label: "Join" },
+  { href: "/join", label: "Telegram Tips" },
   { href: "/sportsbooks", label: "Sportsbooks" },
-  { href: "/join", label: "Get Started", isButton: true },
+  { href: "/sweepstakes", label: "Sweepstakes" },
+  { href: "/casino", label: "Casino" },
+  { href: "/join", label: "Activate Now", isButton: true },
 ];
 
 export default function MobileNav() {

@@ -59,6 +59,16 @@ export default function HomePage() {
   return (
     <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', background: LIGHT, color: CHARCOAL }}>
 
+      {/* TICKER */}
+      <div style={{ background: '#D91E27', padding: '8px 0', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+        <div style={{ display: 'inline-flex', gap: 48, animation: 'ticker 30s linear infinite' }}>
+          {['John from NY just claimed $250 with FanDuel', 'Mike from PA joined the Telegram tips group', 'Sarah from IL claimed $200 with DraftKings', 'Chris from OH just claimed $200 with Fanatics', 'James from NJ claimed $200 with Caesars', 'Tyler from MI joined the Telegram tips group', 'David from CO claimed $150 with BetMGM', 'Ryan from TN just claimed $250 with FanDuel'].map(function(msg, i) {
+            return <span key={i} style={{ fontSize: 13, fontWeight: 600, color: '#ffffff', letterSpacing: 0.3 }}>⭐ {msg}</span>;
+          })}
+        </div>
+      </div>
+      <style>{`@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
+
       {/* HERO */}
       <div style={{ background: NAVY, position: 'relative', overflow: 'hidden', padding: '80px 24px 100px' }}>
         {/* Stripe texture */}
@@ -95,7 +105,7 @@ export default function HomePage() {
 
           {/* Trust badges */}
           <div style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap', marginTop: 52 }}>
-            {[['30+', 'Legal States'], ['5', 'Top Sportsbooks'], ['$500+', 'In Rewards'], ['21+', 'Age Required']].map(function(item) {
+            {[['47+', 'Legal States'], ['5', 'Top Sportsbooks'], ['$500+', 'In Rewards'], ['21+', 'Age Required']].map(function(item) {
               return (
                 <div key={item[0]} style={{ textAlign: 'center' }}>
                   <div style={{ fontSize: 28, fontWeight: 900, color: WHITE, lineHeight: 1 }}>{item[0]}</div>
@@ -107,16 +117,48 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* STATES BAR */}
-      <div style={{ background: '#0f2147', padding: '14px 24px', overflowX: 'auto' }}>
-        <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap', maxWidth: 1000, margin: '0 auto' }}>
-          {STATES.map(function(s) {
+      {/* SOCIAL PROOF BANNER */}
+      <div style={{ background: '#111827', padding: '16px 24px', textAlign: 'center' }}>
+        <div style={{ maxWidth: 860, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 32, flexWrap: 'wrap' }}>
+          {[
+            { value: '2,400+', label: 'Telegram members' },
+            { value: '$485,000+', label: 'In rewards claimed' },
+            { value: '4.9/5', label: 'Average rating' },
+            { value: '48hrs', label: 'Avg approval time' },
+          ].map(function(stat) {
             return (
-              <span key={s} style={{ background: userState === s ? RED : 'rgba(255,255,255,0.1)', color: WHITE, fontSize: 11, fontWeight: 700, padding: '4px 10px', borderRadius: 4, letterSpacing: 0.5 }}>
-                {s}
-              </span>
-            )
+              <div key={stat.label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ fontSize: 18, fontWeight: 900, color: '#D91E27' }}>{stat.value}</span>
+                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', fontWeight: 500 }}>{stat.label}</span>
+              </div>
+            );
           })}
+        </div>
+      </div>
+
+      {/* WHY US */}
+      <div style={{ padding: '60px 24px', background: '#ffffff' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <div style={{ display: 'inline-block', background: '#D91E27', color: '#ffffff', fontSize: 11, fontWeight: 800, letterSpacing: 2, textTransform: 'uppercase', padding: '5px 16px', borderRadius: 4, marginBottom: 16 }}>Why Us</div>
+            <h2 style={{ fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 900, color: '#1B3A6B', margin: 0, textTransform: 'uppercase', letterSpacing: -0.5 }}>Why BetAndPlayUSA?</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 24 }}>
+            {[
+              { icon: '✓', title: 'No Extra Cost', desc: 'We earn from sportsbooks directly. You pay nothing extra and your bonus is never reduced.' },
+              { icon: '$', title: 'Verified Offers', desc: 'Every offer is verified and updated regularly. We only feature licensed, regulated US sportsbooks.' },
+              { icon: '⚡', title: 'Instant Rewards', desc: 'Cash rewards paid on the spot at venues. Telegram access granted within 24 hours of approval.' },
+              { icon: '🔒', title: 'Safe & Secure', desc: 'Your data is held for 90 days for verification only. Never sold to third parties. GDPR & CCPA compliant.' },
+            ].map(function(item) {
+              return (
+                <div key={item.title} style={{ background: '#f4f6fa', borderRadius: 14, padding: '28px 24px', border: '1px solid #e5e7eb', textAlign: 'center' }}>
+                  <div style={{ width: 52, height: 52, background: '#1B3A6B', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: 22, color: '#ffffff', fontWeight: 900 }}>{item.icon}</div>
+                  <h3 style={{ fontSize: 16, fontWeight: 900, color: '#1B3A6B', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: 0.3 }}>{item.title}</h3>
+                  <p style={{ fontSize: 14, color: '#4b5563', margin: 0, lineHeight: 1.7 }}>{item.desc}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -153,8 +195,9 @@ export default function HomePage() {
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
             <div style={{ display: 'inline-block', background: RED, color: WHITE, fontSize: 11, fontWeight: 800, letterSpacing: 2, textTransform: 'uppercase', padding: '5px 16px', borderRadius: 4, marginBottom: 16 }}>Top Sportsbooks</div>
             <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 900, color: NAVY, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: -0.5 }}>
-              {isUSState ? 'Available in ' + userState : 'Featured Books'}
+              {isUSState ? 'Top Books in ' + userState : 'Featured Books'}
             </h2>
+            {isUSState && <p style={{ color: '#6b7280', fontSize: 15, margin: '0 0 8px' }}>Showing sportsbooks available in your state.</p>}
             <p style={{ color: '#6b7280', fontSize: 15, margin: 0 }}>New customers only. Must be 21+ and in an eligible state.</p>
           </div>
 
@@ -192,6 +235,59 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* SWEEPSTAKES TEASER */}
+      <div style={{ padding: '60px 24px', background: '#111827', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12px)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: 860, margin: '0 auto', position: 'relative' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24 }}>
+            <div style={{ maxWidth: 480 }}>
+              <div style={{ display: 'inline-block', background: 'rgba(217,30,39,0.2)', border: '1px solid rgba(217,30,39,0.4)', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
+                <span style={{ color: '#ffffff', fontSize: 12, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase' }}>Legal in All 50 States</span>
+              </div>
+              <h2 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: '#ffffff', margin: '0 0 12px', textTransform: 'uppercase', lineHeight: 1.1 }}>Try Sweepstakes <span style={{ color: '#D91E27' }}>Casinos</span></h2>
+              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, margin: '0 0 24px', lineHeight: 1.7 }}>Play free casino games and win real prizes. Sweepstakes casinos are legal everywhere — no sports betting laws apply. Perfect for states where sportsbooks are restricted.</p>
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 24 }}>
+                {['Free to play', 'Win real cash', 'All 50 states'].map(function(v) {
+                  return <div key={v} style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '6px 14px', fontSize: 13, color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>{v}</div>;
+                })}
+              </div>
+              <a href="/sweepstakes" style={{ display: 'inline-block', background: '#D91E27', color: '#ffffff', padding: '14px 28px', borderRadius: 8, fontWeight: 800, fontSize: 14, textDecoration: 'none', textTransform: 'uppercase', letterSpacing: 0.5 }}>View Sweepstakes Casinos</a>
+            </div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              {['Stake.us', 'Pulsz', 'McLuck', 'WOW Vegas', 'Chanced'].map(function(name) {
+                return (
+                  <div key={name} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, padding: '10px 16px', fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.8)' }}>{name}</div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CASINO TEASER */}
+      <div style={{ padding: '60px 24px', background: '#1a0a2e', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12px)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: 860, margin: '0 auto', position: 'relative' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24 }}>
+            <div style={{ maxWidth: 480 }}>
+              <div style={{ display: 'inline-block', background: 'rgba(217,30,39,0.2)', border: '1px solid rgba(217,30,39,0.4)', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
+                <span style={{ color: '#ffffff', fontSize: 12, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase' }}>NJ, PA, MI, WV, CT, DE</span>
+              </div>
+              <h2 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: '#ffffff', margin: '0 0 12px', textTransform: 'uppercase', lineHeight: 1.1 }}>Online <span style={{ color: '#D91E27' }}>Casino</span></h2>
+              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, margin: '0 0 24px', lineHeight: 1.7 }}>Slots, live dealer, table games and more from the biggest names in US online casino. Licensed and regulated in 6 states.</p>
+              <a href="/casino" style={{ display: 'inline-block', background: '#D91E27', color: '#ffffff', padding: '14px 28px', borderRadius: 8, fontWeight: 800, fontSize: 14, textDecoration: 'none', textTransform: 'uppercase', letterSpacing: 0.5 }}>View Casino Offers</a>
+            </div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              {['BetMGM Casino', 'DraftKings Casino', 'FanDuel Casino', 'Caesars Palace', 'Golden Nugget'].map(function(name) {
+                return (
+                  <div key={name} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, padding: '10px 16px', fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.8)' }}>{name}</div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* TWO PATHS */}
       <div style={{ padding: '80px 24px', background: NAVY, position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12px)', pointerEvents: 'none' }} />
@@ -203,7 +299,12 @@ export default function HomePage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
             <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 16, padding: 32 }}>
-              <div style={{ width: 56, height: 56, background: 'rgba(217,30,39,0.2)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16, fontSize: 28, fontWeight: 900, color: '#D91E27' }}>$</div>
+              <div style={{ width: 56, height: 56, background: 'rgba(217,30,39,0.15)', border: '2px solid rgba(217,30,39,0.3)', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, flexShrink: 0 }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D91E27" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
               <h3 style={{ fontSize: 22, fontWeight: 900, color: WHITE, margin: '0 0 12px', textTransform: 'uppercase' }}>Cash Reward</h3>
               <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: '0 0 24px', fontSize: 15 }}>Scan a QR code at a participating bar or event, sign up with a sportsbook, and collect your cash reward in person from the host.</p>
               <Link href="/activate" style={{ display: 'inline-block', background: RED, color: WHITE, padding: '12px 24px', borderRadius: 8, fontWeight: 800, fontSize: 14, textDecoration: 'none', textTransform: 'uppercase', letterSpacing: 0.5 }}>
@@ -211,13 +312,45 @@ export default function HomePage() {
               </Link>
             </div>
             <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 16, padding: 32 }}>
-              <div style={{ width: 56, height: 56, background: 'rgba(217,30,39,0.2)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16, fontSize: 28, fontWeight: 900, color: '#D91E27' }}>T</div>
+              <div style={{ width: 56, height: 56, background: 'rgba(217,30,39,0.15)', border: '2px solid rgba(217,30,39,0.3)', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, flexShrink: 0 }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D91E27" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"></path>
+                </svg>
+              </div>
               <h3 style={{ fontSize: 22, fontWeight: 900, color: WHITE, margin: '0 0 12px', textTransform: 'uppercase' }}>Telegram Tips</h3>
               <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: '0 0 24px', fontSize: 15 }}>Sign up through our link, upload your proof, and get instant access to our premium Telegram betting tips group — completely free.</p>
               <Link href="/join" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.15)', color: WHITE, padding: '12px 24px', borderRadius: 8, fontWeight: 800, fontSize: 14, textDecoration: 'none', textTransform: 'uppercase', letterSpacing: 0.5, border: '1px solid rgba(255,255,255,0.25)' }}>
                 Join Tips Group
               </Link>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* FAQ */}
+      <div style={{ padding: '80px 24px', background: '#ffffff' }}>
+        <div style={{ maxWidth: 760, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <div style={{ display: 'inline-block', background: '#D91E27', color: '#ffffff', fontSize: 11, fontWeight: 800, letterSpacing: 2, textTransform: 'uppercase', padding: '5px 16px', borderRadius: 4, marginBottom: 16 }}>FAQ</div>
+            <h2 style={{ fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 900, color: '#1B3A6B', margin: 0, textTransform: 'uppercase', letterSpacing: -0.5 }}>Common Questions</h2>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {[
+              { q: 'Is this legitimate?', a: 'Yes. BetAndPlayUSA is an affiliate marketing website. We earn a commission from sportsbooks when you sign up through our links. This is standard practice across the industry and does not affect the bonus you receive.' },
+              { q: 'How do I collect my cash reward?', a: 'For in-person activations, after your submission is verified you simply show the confirmation screen to your host at the bar or event and they pay you cash on the spot.' },
+              { q: 'When do I get access to the Telegram group?', a: 'For social signups via our Join page, your proof is reviewed within 24 hours. Once approved you will receive a Telegram invite link directly to your username.' },
+              { q: 'Do I need to be a new customer?', a: 'Yes. All offers are for new customers only — people who have never had an account with that sportsbook before. One claim per person per sportsbook.' },
+              { q: 'Which states are eligible?', a: 'Sports betting is legal in 47+ US states. Availability varies by sportsbook. Use the filter on our Sportsbooks page to see which books are available in your state.' },
+              { q: 'How much do I need to deposit?', a: 'Most offers require a minimum $5 bet to unlock the bonus. Caesars requires just a $1 bet. Always check the individual sportsbook terms before signing up.' },
+              { q: 'Will this affect my sportsbook bonus?', a: 'No. BetAndPlayUSA earns an affiliate commission from the sportsbook. This comes from the sportsbook marketing budget and does not reduce or affect the welcome bonus you receive.' },
+            ].map(function(item, i) {
+              return (
+                <div key={i} style={{ background: '#f4f6fa', borderRadius: 12, padding: '20px 24px', border: '1px solid #e5e7eb' }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 800, color: '#1B3A6B', margin: '0 0 8px' }}>{item.q}</h3>
+                  <p style={{ fontSize: 14, color: '#4b5563', margin: 0, lineHeight: 1.7 }}>{item.a}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
