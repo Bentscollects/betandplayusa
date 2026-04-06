@@ -99,10 +99,10 @@ export default function HomePage() {
           </p>
 
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/activate" style={{ background: RED, color: WHITE, padding: '16px 36px', borderRadius: 8, fontWeight: 800, fontSize: 16, textDecoration: 'none', letterSpacing: 0.5, textTransform: 'uppercase', boxShadow: '0 4px 20px rgba(217,30,39,0.4)' }}>
+            <Link href="/activate" style={{ background: RED, color: WHITE, padding: '18px 40px', borderRadius: 8, fontWeight: 800, fontSize: 17, textDecoration: 'none', letterSpacing: 0.5, textTransform: 'uppercase', boxShadow: '0 6px 24px rgba(217,30,39,0.5)' }}>
               Claim Cash Reward
             </Link>
-            <Link href="/join" style={{ background: 'rgba(255,255,255,0.1)', color: WHITE, padding: '16px 36px', borderRadius: 8, fontWeight: 700, fontSize: 16, textDecoration: 'none', border: '1px solid rgba(255,255,255,0.25)' }}>
+            <Link href="/join" style={{ background: 'transparent', color: WHITE, padding: '18px 32px', borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: 'none', border: '2px solid rgba(255,255,255,0.4)' }}>
               Join Telegram Tips
             </Link>
           </div>
@@ -142,6 +142,30 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* PARTNER LOGOS */}
+      <div style={{ background: '#ffffff', padding: '24px', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: 860, margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontSize: 12, color: '#9ca3af', fontWeight: 600, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 16 }}>Official affiliate partners</p>
+          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
+            {[
+              { name: 'FanDuel', bg: '#1059a4', initials: 'FD', text: '#fff' },
+              { name: 'DraftKings', bg: '#1a1a2e', initials: 'DK', text: '#00d4aa' },
+              { name: 'Caesars', bg: '#003087', initials: 'CS', text: '#FFD700' },
+              { name: 'BetMGM', bg: '#c9a84c', initials: 'BM', text: '#1a1a1a' },
+              { name: 'Fanatics', bg: '#cc0000', initials: 'FA', text: '#fff' },
+              { name: 'bet365', bg: '#027b5b', initials: 'B3', text: '#fff' },
+            ].map(function(book) {
+              return (
+                <div key={book.name} style={{ display: 'flex', alignItems: 'center', gap: 8, background: '#f4f6fa', borderRadius: 10, padding: '8px 14px', border: '1px solid #e5e7eb' }}>
+                  <div style={{ width: 28, height: 28, borderRadius: 6, background: book.bg, color: book.text, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, fontWeight: 800, flexShrink: 0 }}>{book.initials}</div>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: '#374151' }}>{book.name}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
       {/* WHY US */}
       <div style={{ padding: '60px 24px', background: '#ffffff' }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
@@ -177,19 +201,20 @@ export default function HomePage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 32 }}>
             {[
-              { num: '01', title: 'Scan or Click', desc: 'Scan a QR code at a bar or click a link from our ads.' },
-              { num: '02', title: 'Pick a Book', desc: 'Choose from our top 5 US sportsbooks.' },
-              { num: '03', title: 'Sign Up & Bet', desc: 'Create your account and place your first qualifying bet.' },
-              { num: '04', title: 'Get Rewarded', desc: 'Collect your cash reward in person or unlock Telegram tips.' },
+              { num: '01', title: 'Scan or Click', desc: 'Scan a QR code at a bar or click a link from our ads.', icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D91E27" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>' },
+              { num: '02', title: 'Pick a Book', desc: 'Choose from our top US sportsbooks.', icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D91E27" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>' },
+              { num: '03', title: 'Sign Up & Bet', desc: 'Create your account and place your first qualifying bet.', icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D91E27" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>' },
+              { num: '04', title: 'Get Rewarded', desc: 'Collect your cash reward in person or unlock Telegram tips.', icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D91E27" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path></svg>' },
             ].map(function(step) {
               return (
                 <div key={step.num} style={{ position: 'relative' }}>
-                  <div style={{ fontSize: 56, fontWeight: 900, color: 'rgba(27,58,107,0.08)', lineHeight: 1, marginBottom: 8 }}>{step.num}</div>
-                  <div style={{ width: 3, height: 32, background: RED, marginBottom: 12 }} />
-                  <h3 style={{ fontSize: 18, fontWeight: 800, color: NAVY, margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: 0.5 }}>{step.title}</h3>
+                  <div style={{ width: 44, height: 44, background: 'rgba(217,30,39,0.1)', border: '2px solid rgba(217,30,39,0.2)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }} dangerouslySetInnerHTML={{ __html: step.icon }} />
+                  <div style={{ fontSize: 48, fontWeight: 900, color: 'rgba(27,58,107,0.06)', lineHeight: 1, marginBottom: 6, marginTop: -8 }}>{step.num}</div>
+                  <div style={{ width: 3, height: 28, background: RED, marginBottom: 10 }} />
+                  <h3 style={{ fontSize: 17, fontWeight: 800, color: NAVY, margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: 0.5 }}>{step.title}</h3>
                   <p style={{ fontSize: 14, color: '#4b5563', margin: 0, lineHeight: 1.6 }}>{step.desc}</p>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
@@ -389,6 +414,14 @@ export default function HomePage() {
         <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', margin: 0, maxWidth: 700, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.7 }}>
           BetAndPlayUSA is an affiliate marketing website. We earn commissions when you sign up through our links. This does not affect the bonuses you receive. Must be 21+ and physically located in an eligible US state. Gambling problem? Call 1-800-GAMBLER.
         </p>
+      </div>
+
+      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 999, background: '#0f2147', borderTop: '2px solid #D91E27', padding: '12px 16px', display: 'flex', gap: 10 }}>
+        <style>{`@media (min-width: 768px) { .mobile-sticky-cta { display: none !important; } }`}</style>
+        <div className="mobile-sticky-cta" style={{ display: 'flex', gap: 10, width: '100%' }}>
+          <a href="/activate" style={{ flex: 1, background: '#D91E27', color: '#fff', textAlign: 'center', padding: '13px 8px', borderRadius: 8, fontWeight: 800, fontSize: 13, textDecoration: 'none', textTransform: 'uppercase', letterSpacing: 0.3 }}>Claim Cash</a>
+          <a href="/join" style={{ flex: 1, background: 'rgba(255,255,255,0.1)', color: '#fff', textAlign: 'center', padding: '13px 8px', borderRadius: 8, fontWeight: 800, fontSize: 13, textDecoration: 'none', textTransform: 'uppercase', letterSpacing: 0.3, border: '1px solid rgba(255,255,255,0.2)' }}>Join Telegram</a>
+        </div>
       </div>
 
     </div>

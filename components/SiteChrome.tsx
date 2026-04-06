@@ -21,10 +21,10 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
               <span>Bet<span style={{ color: '#D91E27' }}>&</span>PlayUSA</span>
             </Link>
             <nav className="desktop-nav" style={{ display: 'flex', gap: 18, alignItems: 'center', flexWrap: 'wrap' }}>
-              <Link href="/sportsbooks" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Sportsbooks</Link>
-              <Link href="/dfs" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>DFS</Link>
-              <Link href="/sweepstakes" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Sweepstakes</Link>
-              <Link href="/casino" style={{ color: white, textDecoration: 'none', fontWeight: 600 }}>Casino</Link>
+              <Link href="/sportsbooks" style={{ color: white, textDecoration: 'none', fontWeight: 600, borderBottom: pathname === '/sportsbooks' ? '2px solid #D91E27' : '2px solid transparent', paddingBottom: 2 }}>Sportsbooks</Link>
+              <Link href="/dfs" style={{ color: white, textDecoration: 'none', fontWeight: 600, borderBottom: pathname === '/dfs' ? '2px solid #D91E27' : '2px solid transparent', paddingBottom: 2 }}>DFS</Link>
+              <Link href="/sweepstakes" style={{ color: white, textDecoration: 'none', fontWeight: 600, borderBottom: pathname === '/sweepstakes' ? '2px solid #D91E27' : '2px solid transparent', paddingBottom: 2 }}>Sweepstakes</Link>
+              <Link href="/casino" style={{ color: white, textDecoration: 'none', fontWeight: 600, borderBottom: pathname === '/casino' ? '2px solid #D91E27' : '2px solid transparent', paddingBottom: 2 }}>Casino</Link>
               <Link href="/activate" style={{ backgroundColor: white, color: brandNavy, padding: '10px 18px', borderRadius: 9999, textDecoration: 'none', fontWeight: 800, fontSize: 14 }}>Get Rewarded</Link>
             </nav>
             <div className="mobile-nav-hamburger" style={{ display: 'flex', alignItems: 'center' }}>
@@ -47,7 +47,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
                   <span style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: '#D91E27', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>⭐</span>
                   <span style={{ fontWeight: 800, fontSize: 18 }}>Bet<span style={{ color: '#D91E27' }}>&amp;</span>PlayUSA</span>
                 </div>
-                <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, fontSize: 14, margin: '0 0 16px' }}>Premium sportsbook rewards with local host access and social acquisition offers across 30+ US states.</p>
+                <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, fontSize: 14, margin: '0 0 16px' }}>Premium sportsbook rewards with local host access and social acquisition offers across 47+ US states.</p>
                 <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, margin: 0 }}>Must be 21+. Please gamble responsibly.</p>
               </div>
               <div style={{ minWidth: 140 }}>

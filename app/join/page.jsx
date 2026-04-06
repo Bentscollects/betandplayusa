@@ -297,7 +297,13 @@ export default function JoinPage() {
             </div>
             {error && <p style={{ color: RED, fontSize: 14, marginBottom: 12, textAlign: 'center', fontWeight: 600 }}>{error}</p>}
             <button onClick={handleSubmit} disabled={uploading} style={{ width: '100%', padding: 16, borderRadius: 12, border: 'none', background: uploading ? '#9ca3af' : RED, color: WHITE, fontSize: 16, fontWeight: 800, cursor: uploading ? 'not-allowed' : 'pointer', textTransform: 'uppercase', letterSpacing: 0.5 }}>
-              {uploading ? 'Submitting...' : 'Submit Proof'}
+              {uploading ? (
+                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                  <span style={{ width: 16, height: 16, border: '2px solid rgba(255,255,255,0.3)', borderTop: '2px solid #fff', borderRadius: '50%', display: 'inline-block', animation: 'spin 0.8s linear infinite' }} />
+                  Submitting...
+                </span>
+              ) : 'Submit Proof'}
+              <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
             </button>
             <p style={{ fontSize: 12, color: '#9ca3af', textAlign: 'center', marginTop: 16, lineHeight: 1.6 }}>By submitting you agree to our Terms and Privacy Policy. Must be 21+. Gambling problem? Call 1-800-GAMBLER.</p>
           </div>

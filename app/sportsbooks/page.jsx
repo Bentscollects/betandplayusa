@@ -120,12 +120,15 @@ export default function SportsbooksPage() {
           </div>
           <h1 style={{ fontSize: 'clamp(28px, 5vw, 42px)', fontWeight: 900, color: WHITE, margin: '0 0 14px', textTransform: 'uppercase', letterSpacing: -0.5 }}>Top US Sportsbooks</h1>
           <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: 15, margin: '0 0 28px', lineHeight: 1.6 }}>Compare the best offers available right now. New customers only. Must be 21+.</p>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 12, padding: '10px 16px' }}>
-            <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14, fontWeight: 600, whiteSpace: 'nowrap' }}>Filter by state:</span>
-            <select value={selectedState} onChange={function(e) { setSelectedState(e.target.value); }} style={{ background: 'transparent', color: WHITE, border: 'none', fontSize: 14, fontWeight: 700, outline: 'none', cursor: 'pointer' }}>
-              <option value="" style={{ color: '#000' }}>All states</option>
-              {ALL_STATES.map(function(s) { return <option key={s} value={s} style={{ color: '#000' }}>{s}</option>; })}
-            </select>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, marginTop: 8 }}>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, margin: 0 }}>Showing offers for your state — update below if needed</p>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'rgba(255,255,255,0.12)', border: '2px solid rgba(255,255,255,0.25)', borderRadius: 12, padding: '12px 20px' }}>
+              <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, fontWeight: 700, whiteSpace: 'nowrap' }}>Your state:</span>
+              <select value={selectedState} onChange={function(e) { setSelectedState(e.target.value); }} style={{ background: 'transparent', color: WHITE, border: 'none', fontSize: 16, fontWeight: 800, outline: 'none', cursor: 'pointer', minWidth: 120 }}>
+                <option value="" style={{ color: '#000' }}>All states</option>
+                {ALL_STATES.map(function(s) { return <option key={s} value={s} style={{ color: '#000' }}>{s}</option>; })}
+              </select>
+            </div>
           </div>
         </div>
       </div>

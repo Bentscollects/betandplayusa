@@ -149,7 +149,11 @@ export default function ActivatePage() {
               <p style={{ color: '#6b7280', fontSize: 14, margin: '0 0 24px', lineHeight: 1.6 }}>Ask your host for the activation code, then enter it below to get started.</p>
               <input
                 value={code}
-                onChange={function(e) { setCode(e.target.value.toUpperCase()); }}
+                onChange={function(e) {
+                  var val = e.target.value.toUpperCase().replace(/[^A-Z0-9-]/g, '');
+                  setCode(val);
+                }}
+                maxLength={10}
                 onKeyDown={function(e) { if (e.key === 'Enter') validateCode(); }}
                 placeholder="e.g. BAR-001"
                 style={{ width: '100%', padding: '14px 16px', border: codeError ? '2px solid ' + RED : '2px solid #e5e7eb', borderRadius: 10, fontSize: 18, fontWeight: 700, letterSpacing: 2, textAlign: 'center', textTransform: 'uppercase', outline: 'none', boxSizing: 'border-box', color: NAVY }}
@@ -182,11 +186,11 @@ export default function ActivatePage() {
         {step === 2 && (
           <div>
             {venue && (
-              <div style={{ background: WHITE, borderRadius: 12, border: '1px solid #e5e7eb', padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
-                <div style={{ width: 36, height: 36, borderRadius: '50%', background: RED, color: WHITE, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, flexShrink: 0 }}>📍</div>
+              <div style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0f2147 100%)', borderRadius: 14, border: '2px solid rgba(217,30,39,0.3)', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 14, marginBottom: 20, boxShadow: '0 4px 16px rgba(27,58,107,0.2)' }}>
+                <div style={{ width: 44, height: 44, borderRadius: '50%', background: '#22c55e', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0, boxShadow: '0 0 0 4px rgba(34,197,94,0.2)' }}>✓</div>
                 <div>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: '#9ca3af', textTransform: 'uppercase', letterSpacing: 0.5 }}>Activated at</div>
-                  <div style={{ fontSize: 15, fontWeight: 800, color: NAVY }}>{venue}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 4 }}>Code verified! You are at</div>
+                  <div style={{ fontSize: 18, fontWeight: 900, color: '#ffffff', lineHeight: 1.2 }}>{venue}</div>
                 </div>
               </div>
             )}
@@ -310,26 +314,32 @@ export default function ActivatePage() {
 
             {error && <p style={{ color: RED, fontSize: 14, marginBottom: 12, textAlign: 'center', fontWeight: 600 }}>{error}</p>}
             <button onClick={handleSubmit} disabled={uploading} style={{ width: '100%', padding: 16, borderRadius: 12, border: 'none', background: uploading ? '#9ca3af' : RED, color: WHITE, fontSize: 16, fontWeight: 800, cursor: uploading ? 'not-allowed' : 'pointer', textTransform: 'uppercase', letterSpacing: 0.5 }}>
-              {uploading ? 'Submitting...' : 'Submit Proof'}
+              {uploading ? (
+                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                  <span style={{ width: 16, height: 16, border: '2px solid rgba(255,255,255,0.3)', borderTop: '2px solid #fff', borderRadius: '50%', display: 'inline-block', animation: 'spin 0.8s linear infinite' }} />
+                  Submitting...
+                </span>
+              ) : 'Submit Proof'}
+              <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
             </button>
             <p style={{ fontSize: 12, color: '#9ca3af', textAlign: 'center', marginTop: 16, lineHeight: 1.6 }}>Must be 21+. Gambling problem? Call 1-800-GAMBLER.</p>
           </div>
         )}
 
         {step === 4 && (
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ background: WHITE, borderRadius: 20, padding: '48px 32px', border: '1px solid #e5e7eb', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}>
+          <div style={{ textAlign: 'center', width: '100%', boxSizing: 'border-box' }}>
+            <div style={{ background: WHITE, borderRadius: 20, padding: '32px 20px', border: '1px solid #e5e7eb', boxShadow: '0 4px 24px rgba(0,0,0,0.06)', width: '100%', boxSizing: 'border-box' }}>
               <div style={{ width: 80, height: 80, background: '#dcfce7', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', fontSize: 40 }}>✓</div>
               <h2 style={{ fontSize: 26, fontWeight: 900, color: NAVY, marginBottom: 12, marginTop: 0, textTransform: 'uppercase' }}>Proof Submitted!</h2>
               <p style={{ color: '#6b7280', marginBottom: 28, lineHeight: 1.7, fontSize: 15 }}>Your submission has been received. Show this screen to your host to collect your cash reward.</p>
-              <div style={{ background: NAVY, borderRadius: 16, padding: '20px 24px', marginBottom: 24 }}>
+              <div style={{ background: NAVY, borderRadius: 16, padding: '16px 20px', marginBottom: 24, width: '100%', boxSizing: 'border-box' }}>
                 <div style={{ fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 6 }}>Show host at</div>
                 <div style={{ fontSize: 20, fontWeight: 900, color: WHITE }}>{venue}</div>
               </div>
-              <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: 12, padding: 16 }}>
+              <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: 12, padding: '14px 16px', width: '100%', boxSizing: 'border-box' }}>
                 <p style={{ fontSize: 14, color: '#166534', margin: 0, fontWeight: 600 }}>Your host will verify your submission and pay your cash reward on the spot.</p>
               </div>
-              <div style={{ marginTop: 20, background: '#f4f6fa', borderRadius: 14, padding: '20px 24px', textAlign: 'left' }}>
+              <div style={{ marginTop: 20, background: '#f4f6fa', borderRadius: 14, padding: '16px 20px', textAlign: 'left', width: '100%', boxSizing: 'border-box' }}>
                 <div style={{ fontSize: 14, fontWeight: 800, color: '#1B3A6B', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.3 }}>Share with friends</div>
                 <p style={{ fontSize: 13, color: '#6b7280', margin: '0 0 12px', lineHeight: 1.6 }}>Know someone who wants to claim a cash reward? Share BetAndPlayUSA with them.</p>
                 <button onClick={function() {
