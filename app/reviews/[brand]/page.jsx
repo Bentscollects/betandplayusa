@@ -323,7 +323,7 @@ export default async function ReviewPage(props) {
           <Link href="/sportsbooks" style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, textDecoration: 'none', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 20 }}>← Back to all sportsbooks</Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
             <div style={{ width: 90, height: 90, borderRadius: 18, background: review.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 10, boxSizing: 'border-box' }}>
-              <img src={review.logo} alt={review.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              <img src={review.logo} alt={review.name} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
             </div>
             <div>
               <div style={{ display: 'inline-block', background: 'rgba(217,30,39,0.2)', border: '1px solid rgba(217,30,39,0.4)', borderRadius: 20, padding: '4px 12px', marginBottom: 10 }}>
@@ -528,7 +528,7 @@ export default async function ReviewPage(props) {
               return (
                 <Link key={entry[0]} href={'/reviews/' + entry[0]} style={{ background: WHITE, borderRadius: 12, border: '1px solid #e5e7eb', padding: '16px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
                   <div style={{ width: 48, height: 48, borderRadius: 10, background: b.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 5, boxSizing: 'border-box' }}>
-                    <img src={b.logo} alt={b.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                    <img src={b.logo} alt={b.name} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                   </div>
                   <div>
                     <div style={{ fontWeight: 800, color: NAVY, fontSize: 15 }}>{b.name}</div>

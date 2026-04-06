@@ -168,9 +168,8 @@ export default function SportsbooksPage() {
                 )}
                 <div style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
                   <a href={'/reviews/' + book.id} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: 16, flex: 1, flexWrap: 'wrap', cursor: 'pointer' }}>
-                  <div style={{ width: 64, height: 64, borderRadius: 12, background: book.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 6, boxSizing: 'border-box', position: 'relative' }}>
-                    <img src={book.logo} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} onError={function(e) { e.target.style.display = 'none'; }} />
-                    <span style={{ position: 'absolute', color: book.text || '#fff', fontWeight: 900, fontSize: 16 }}>{book.initials}</span>
+                  <div style={{ width: 64, height: 64, borderRadius: 12, background: book.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 8, boxSizing: 'border-box' }}>
+                    <img src={book.logo} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                   </div>
                   <div style={{ flex: 1, minWidth: 180 }}>
                     <div style={{ fontWeight: 900, fontSize: 18, color: NAVY, marginBottom: 4 }}>{book.name}</div>

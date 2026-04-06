@@ -181,7 +181,7 @@ export default function JoinPage() {
                 return (
                   <button key={book.id} type="button" autoComplete="off" onClick={function() { setSelectedBook(book); }} style={{ background: selected ? '#f0f4ff' : '#fff', border: selected ? '2px solid ' + NAVY : '2px solid #e5e7eb', borderRadius: 12, padding: '14px 16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 12, textAlign: 'left', width: '100%' }}>
                     <div style={{ width: 46, height: 46, borderRadius: 10, background: book.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 4, boxSizing: 'border-box' }}>
-                      <img src={book.logo} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                      <img src={book.logo} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                     </div>
                     <div style={{ flex: 1 }}>
                       <a href={'/reviews/' + book.id} target="_blank" style={{ fontWeight: 800, color: NAVY, fontSize: 15, textDecoration: 'none' }}>{book.name}</a>
@@ -207,7 +207,7 @@ export default function JoinPage() {
             {selectedBook && (
               <div style={{ background: '#f0f4ff', borderRadius: 10, padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
                 <div style={{ width: 32, height: 32, borderRadius: 7, background: selectedBook.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 3, boxSizing: 'border-box' }}>
-                  <img src={selectedBook.logo} alt={selectedBook.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  <img src={selectedBook.logo} alt={selectedBook.name} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                 </div>
                 <div>
                   <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{selectedBook.name}</div>
