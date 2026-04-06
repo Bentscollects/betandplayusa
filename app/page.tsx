@@ -203,7 +203,7 @@ export default function HomePage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
             <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 16, padding: 32 }}>
-              <div style={{ fontSize: 40, marginBottom: 16 }}>💵</div>
+              <div style={{ width: 56, height: 56, background: 'rgba(217,30,39,0.2)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16, fontSize: 28, fontWeight: 900, color: '#D91E27' }}>$</div>
               <h3 style={{ fontSize: 22, fontWeight: 900, color: WHITE, margin: '0 0 12px', textTransform: 'uppercase' }}>Cash Reward</h3>
               <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: '0 0 24px', fontSize: 15 }}>Scan a QR code at a participating bar or event, sign up with a sportsbook, and collect your cash reward in person from the host.</p>
               <Link href="/activate" style={{ display: 'inline-block', background: RED, color: WHITE, padding: '12px 24px', borderRadius: 8, fontWeight: 800, fontSize: 14, textDecoration: 'none', textTransform: 'uppercase', letterSpacing: 0.5 }}>
@@ -211,7 +211,7 @@ export default function HomePage() {
               </Link>
             </div>
             <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 16, padding: 32 }}>
-              <div style={{ fontSize: 40, marginBottom: 16 }}>📲</div>
+              <div style={{ width: 56, height: 56, background: 'rgba(217,30,39,0.2)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16, fontSize: 28, fontWeight: 900, color: '#D91E27' }}>T</div>
               <h3 style={{ fontSize: 22, fontWeight: 900, color: WHITE, margin: '0 0 12px', textTransform: 'uppercase' }}>Telegram Tips</h3>
               <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: '0 0 24px', fontSize: 15 }}>Sign up through our link, upload your proof, and get instant access to our premium Telegram betting tips group — completely free.</p>
               <Link href="/join" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.15)', color: WHITE, padding: '12px 24px', borderRadius: 8, fontWeight: 800, fontSize: 14, textDecoration: 'none', textTransform: 'uppercase', letterSpacing: 0.5, border: '1px solid rgba(255,255,255,0.25)' }}>

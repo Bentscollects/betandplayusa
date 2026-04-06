@@ -167,13 +167,17 @@ export default function HostPortal() {
       <div style={{
         width: '100%',
         minHeight: '100vh',
-        backgroundColor: lightGray,
+        backgroundColor: navy,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '20px'
+        padding: '20px',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 12px)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: red }} />
         <div style={{
           backgroundColor: 'white',
           borderRadius: '12px',
@@ -184,10 +188,11 @@ export default function HostPortal() {
         }}>
           <h1 style={{
             fontSize: 28,
-            fontWeight: 700,
+            fontWeight: 900,
             color: navy,
             margin: '0 0 30px 0',
-            textAlign: 'center'
+            textAlign: 'center',
+            textTransform: 'uppercase'
           }}>
             Host Portal
           </h1>
@@ -238,7 +243,7 @@ export default function HostPortal() {
               style={{
                 width: '100%',
                 padding: '12px 20px',
-                backgroundColor: loading ? '#CBD5E1' : navy,
+                backgroundColor: loading ? '#CBD5E1' : red,
                 color: 'white',
                 border: 'none',
                 borderRadius: 8,
@@ -284,13 +289,15 @@ export default function HostPortal() {
           alignItems: 'center',
           position: 'relative',
           overflow: 'hidden',
-          borderTop: '4px solid #D91E27',
         }}>
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 12px)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: red }} />
           <div>
             <h1 style={{
               fontSize: 28,
-              fontWeight: 700,
-              margin: '0 0 8px 0'
+              fontWeight: 900,
+              margin: '0 0 8px 0',
+              textTransform: 'uppercase'
             }}>
               {hostInfo.venue_name}
             </h1>
@@ -627,9 +634,10 @@ export default function HostPortal() {
                               border: 'none',
                               borderRadius: 6,
                               fontSize: 12,
-                              fontWeight: 600,
+                              fontWeight: 800,
                               cursor: 'pointer',
                               whiteSpace: 'nowrap',
+                              textTransform: 'uppercase',
                               transition: 'opacity 0.2s'
                             }}
                             onMouseEnter={(e) => e.target.style.opacity = 0.9}
@@ -680,9 +688,10 @@ export default function HostPortal() {
           }}>
             <h2 style={{
               fontSize: 20,
-              fontWeight: 700,
+              fontWeight: 900,
               color: navy,
-              margin: '0 0 20px 0'
+              margin: '0 0 20px 0',
+              textTransform: 'uppercase'
             }}>
               Verify In-Person Signup
             </h2>
@@ -759,8 +768,9 @@ export default function HostPortal() {
                   border: 'none',
                   borderRadius: 6,
                   fontSize: 14,
-                  fontWeight: 600,
-                  cursor: 'pointer'
+                  fontWeight: 800,
+                  cursor: 'pointer',
+                  textTransform: 'uppercase'
                 }}
               >
                 Confirm Verification
