@@ -67,3 +67,69 @@
 
 ### Affiliate links
 - FanDuel: https://wlfanduelus.adsrv.eacdn.com/C.ashx?btag=a_44859b_16c_&af
+
+---
+
+## What's Built & Working
+
+### ✅ Core pages
+- Homepage (/)
+- Sportsbooks page (/sportsbooks)
+- Activate page (/activate) — in-person flow
+- Join page (/join) — social/Telegram flow
+- Host portal (/host) — venue operator login + submission verify
+- Responsible gambling, Privacy, Terms, Cookies pages
+
+### ✅ Admin portal (/admin)
+- Login with hardcoded credentials
+- Overview — all submissions table, status update (approve/reject/flag)
+- Hosts — host code management (create, activate/deactivate)
+- Reports — date filter, CPA tracking, by venue/sportsbook tables, CSV export, Mark as Paid
+
+### ✅ API routes
+- /api/submit — new submission
+- /api/validate-code — host code validation
+- /api/verify-submission — host portal verification
+- /api/upload-proof — proof image upload
+- /api/send-email — email notifications
+- /api/admin/submissions — admin fetch + status update
+- /api/admin/hosts — host code CRUD
+- /api/cron/daily-digest — daily Resend email report
+
+### ✅ Sweepstakes page (/sweepstakes)
+- 5 sweepstakes casinos: Stake.us, Pulsz, McLuck, WOW Vegas, Chanced
+- Legal in all 50 states messaging
+- How it works section
+- Affiliate link placeholders (need real links)
+
+### ✅ Casino page (/casino)
+- 5 online casinos: BetMGM, DraftKings, FanDuel, Caesars, Golden Nugget
+- Available in NJ, PA, MI, WV, CT, DE only
+- Star ratings and Best For labels
+- Affiliate link placeholders (need real links)
+
+### ✅ Homepage enhancements
+- Red scrolling ticker banner at top
+- Social proof bar (2,400+ members, $485k+ claimed)
+- Why BetAndPlayUSA section (4 trust cards)
+- Sweepstakes and Casino teaser sections
+- FAQ section
+- States bar removed, replaced with cleaner layout
+
+### ✅ Sportsbooks enhancements
+- Star ratings, Best For, Payout Speed on each card
+- T&Cs text on every offer
+- Limited Time badge on FanDuel
+
+### ✅ Admin reports
+- Mark as Paid button on approved submissions
+
+---
+
+## What Still Needs Building
+
+1. Real affiliate links for sweepstakes casinos (Stake.us, Pulsz, McLuck, WOW Vegas, Chanced)
+2. Real affiliate links for online casinos (BetMGM Casino, DraftKings Casino, FanDuel Casino, Caesars, Golden Nugget)
+3. State landing pages — /states/[state] for top 10 states (NY, PA, NJ, MI, IL, OH, CO, TN, VA, AZ)
+4. Referral system — user referral links after submission
+5. Make GitHub repo private
