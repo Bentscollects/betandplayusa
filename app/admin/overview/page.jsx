@@ -141,8 +141,15 @@ export default function AdminOverview() {
     <div style={{ minHeight: '100vh', background: '#f8f9fb', fontFamily: 'system-ui, sans-serif' }}>
       {toast && <Toast msg={toast.msg} type={toast.type} onClose={function() { setToast(null); }} />}
 
-      <div style={{ background: '#0B2545', padding: '0 32px', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div style={{ background: '#1B3A6B', padding: '0 32px', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <span style={{ color: '#fff', fontWeight: 700, fontSize: 16 }}>BetAndPlayUSA Admin</span>
+        <div style={{ display: 'flex', gap: 4 }}>
+          {[['Overview', '/admin/overview'], ['Hosts', '/admin/hosts']].map(function(item) {
+            return (
+              <a key={item[0]} href={item[1]} style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: 13, fontWeight: 600, padding: '6px 12px', borderRadius: 6, background: item[1] === '/admin/overview' ? 'rgba(255,255,255,0.1)' : 'none' }}>{item[0]}</a>
+            );
+          })}
+        </div>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13 }}>liambenton2@gmail.com</span>
           <button onClick={logout} style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', padding: '6px 14px', borderRadius: 8, cursor: 'pointer', fontSize: 13 }}>Log out</button>
