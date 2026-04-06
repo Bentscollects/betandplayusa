@@ -12,6 +12,8 @@ const SPORTSBOOKS = [
     name: 'FanDuel',
     logo: '/fanduel.png',
     bg: '#1059a4',
+    initials: 'FD',
+    text: '#fff',
     offer: 'Bet $5, Get up to $300 Back Each Day for 10 Days',
     details: 'No promo code needed \u2014 bonus auto applied at signup.',
     affiliateLink: 'https://wlfanduelus.adsrv.eacdn.com/C.ashx?btag=a_44859b_16c_&affid=21038&siteid=44859&adid=16&c=',
@@ -27,6 +29,8 @@ const SPORTSBOOKS = [
     name: 'DraftKings',
     logo: '/draftkings.png',
     bg: '#1a1a2e',
+    initials: 'DK',
+    text: '#00d4aa',
     offer: 'Bet $5, Get $200 in Bonus Bets Instantly',
     details: 'No promo code needed \u2014 bonus auto applied at signup.',
     affiliateLink: 'https://dksb.sng.link/As9kz/uc22?_dl=https%3A%2F%2Fsportsbook.draftkings.com%2Fgateway%3Fs%3D103658189&pcid=422642&psn=3064&pcn=OSB_Bet5NUO&pscn=oddschecker_101GreatGoals&pcrn=WebReview&pscid=xx&pcrid=xx&wpcid=422642&wpsrc=3064&wpcn=OSB_Bet5NUO&wpscn=oddschecker_101GreatGoals&wpcrn=WebReview&wpscid=xx&wpcrid=xx&_forward_params=1',
@@ -41,6 +45,8 @@ const SPORTSBOOKS = [
     name: 'bet365',
     logo: '/bet365.png',
     bg: '#027b5b',
+    initials: 'B3',
+    text: '#fff',
     offer: 'Bet $5, Get $365 in Bonus Bets Win or Lose',
     details: 'Use promo code FOX365 at signup.',
     rating: 4.7,
@@ -56,6 +62,8 @@ const SPORTSBOOKS = [
     name: 'Caesars',
     logo: '/caesars.png',
     bg: '#003087',
+    initials: 'CS',
+    text: '#FFD700',
     offer: 'Bet $1, Double Your Winnings on Next 10 Wagers',
     details: 'Promo code auto applied via our link.',
     affiliateLink: 'https://wlwilliamhillus.adsrv.eacdn.com/C.ashx?btag=a_26199b_2588c_&affid=465&siteid=26199&adid=2588&c=',
@@ -70,6 +78,8 @@ const SPORTSBOOKS = [
     name: 'Fanatics',
     logo: '/fanatics.png',
     bg: '#cc0000',
+    initials: 'FA',
+    text: '#fff',
     offer: 'Bet $5, Get $200 in FanCash Immediately',
     details: 'Promo code auto applied via our link.',
     affiliateLink: 'https://track.fanaticsbettingpartners.com/track/e3da5749-405e-4283-a8de-cb773323f82c?type=seo&s1=Confido52',
@@ -84,6 +94,8 @@ const SPORTSBOOKS = [
     name: 'BetMGM',
     logo: '/betmgm.png',
     bg: '#c9a84c',
+    initials: 'BM',
+    text: '#1a1a1a',
     offer: 'Get up to $1,500 Back in Bonus Bets if First Bet Loses',
     details: 'Promo code auto applied via our link.',
     affiliateLink: 'https://mediaserver.betmgmpartners.com/renderBanner.do?zoneId=1727083',
@@ -155,8 +167,10 @@ export default function SportsbooksPage() {
                   <div style={{ background: '#f59e0b', color: '#fff', fontSize: 10, fontWeight: 800, padding: '4px 12px', textTransform: 'uppercase', letterSpacing: 1, display: 'inline-block' }}>Limited Time</div>
                 )}
                 <div style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
-                  <div style={{ width: 64, height: 64, borderRadius: 12, background: book.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 6, boxSizing: 'border-box' }}>
-                    <img src={book.logo} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  <a href={'/reviews/' + book.id} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: 16, flex: 1, flexWrap: 'wrap', cursor: 'pointer' }}>
+                  <div style={{ width: 64, height: 64, borderRadius: 12, background: book.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', padding: 6, boxSizing: 'border-box', position: 'relative' }}>
+                    <img src={book.logo} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} onError={function(e) { e.target.style.display = 'none'; }} />
+                    <span style={{ position: 'absolute', color: book.text || '#fff', fontWeight: 900, fontSize: 16 }}>{book.initials}</span>
                   </div>
                   <div style={{ flex: 1, minWidth: 180 }}>
                     <div style={{ fontWeight: 900, fontSize: 18, color: NAVY, marginBottom: 4 }}>{book.name}</div>
@@ -179,6 +193,7 @@ export default function SportsbooksPage() {
                     </div>
                     <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 6 }}>T&Cs apply. New customers only. 21+. Min deposit required. State restrictions apply.</div>
                   </div>
+                  </a>
                   <div style={{ flexShrink: 0, textAlign: 'center' }}>
                     <button onClick={function() { handleClaim(book); }} style={{ background: RED, color: WHITE, border: 'none', borderRadius: 10, padding: '14px 28px', fontSize: 15, fontWeight: 800, cursor: 'pointer', textTransform: 'uppercase', letterSpacing: 0.5, boxShadow: '0 4px 12px rgba(217,30,39,0.3)', display: 'block', whiteSpace: 'nowrap' }}>
                       Claim Offer

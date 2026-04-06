@@ -294,7 +294,7 @@ export default function HomePage() {
                       {logoSrc ? <img src={logoSrc} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} /> : <span style={{ color: '#fff', fontWeight: 800, fontSize: 14 }}>{book.id.slice(0,2).toUpperCase()}</span>}
                     </div>
                     <div style={{ flex: 1, minWidth: 180 }}>
-                      <div style={{ fontWeight: 800, fontSize: 17, color: NAVY }}>{book.name}</div>
+                      <Link href={'/reviews/' + book.id} style={{ fontWeight: 800, fontSize: 17, color: NAVY, textDecoration: 'none', display: 'block' }}>{book.name}</Link>
                       <div style={{ fontSize: 14, color: '#374151', marginTop: 3, fontWeight: 600 }}>{book.offer}</div>
                     </div>
                     <button onClick={function() { window.open(AFFILIATE_LINKS[book.id] || '/activate', '_blank') }} className="claim-btn" style={{ background: RED, color: WHITE, padding: '12px 24px', borderRadius: 8, fontWeight: 800, fontSize: 14, border: 'none', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: 0.5, flexShrink: 0, whiteSpace: 'nowrap' }}>

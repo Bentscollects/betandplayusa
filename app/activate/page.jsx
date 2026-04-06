@@ -206,7 +206,8 @@ export default function ActivatePage() {
                         <img src={book.logo} alt={book.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                       </div>
                       <div style={{ flex: 1 }}>
-                        <div style={{ fontWeight: 800, color: NAVY, fontSize: 15 }}>{book.name}</div>
+                        <a href={'/reviews/' + book.id} target="_blank" style={{ fontWeight: 800, color: NAVY, fontSize: 15, textDecoration: 'none' }}>{book.name}</a>
+                        <a href={'/reviews/' + book.id} target="_blank" style={{ fontSize: 11, color: '#6b7280', display: 'block', marginTop: 2, textDecoration: 'underline' }}>Read full review</a>
                         <div style={{ color: '#6b7280', fontSize: 13, marginTop: 2 }}>{book.offer}</div>
                       </div>
                       {selected && <div style={{ width: 24, height: 24, borderRadius: '50%', background: NAVY, color: WHITE, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, flexShrink: 0, fontWeight: 900 }}>✓</div>}
