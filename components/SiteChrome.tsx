@@ -2,6 +2,7 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import MobileNav from './MobileNav';
+import ExitIntent from './ExitIntent';
 
 const brandNavy = '#0B2545';
 const white = '#ffffff';
@@ -32,6 +33,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
         </header>
       )}
       <main style={{ flex: 1 }}>{children}</main>
+      {!isAdmin && <ExitIntent />}
       {!isAdmin && (
         <footer style={{ backgroundColor: '#1B3A6B', color: '#ffffff', padding: '48px 32px 24px' }}>
           <div style={{ position: 'relative' }}>
